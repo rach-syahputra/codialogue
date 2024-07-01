@@ -26,12 +26,12 @@
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/jsx-props-no-spreading": "off",
-      "react/prop-types": "off",
+    //   "react/prop-types": "off",
       "semi": "off",
       "eol-last": "off",
       "no-unused-vars": "warn",
       "quotes": "off",
-      "no-console": "off",
-      "import/no-extraneous-dependencies": ["off", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}]
+      "no-console": "off"
+    //   "import/no-extraneous-dependencies": ["off", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}]
   }
 }
