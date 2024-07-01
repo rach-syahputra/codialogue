@@ -13,8 +13,13 @@ const store = configureStore({
     threads: threadsReducer,
     threadDetail: threadDetailReducer,
     users: usersReducer,
-    loadingBar: loadingBarReducer
-  }
+    loadingBar: loadingBarReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
 })
 
 export default store
