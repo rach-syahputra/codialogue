@@ -46,14 +46,14 @@ const api = (() => {
     return user
   }
 
-  async function login({ id, password }) {
+  async function login({ email, password }) {
     const response = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id,
+        email,
         password,
       }),
     })
@@ -74,7 +74,7 @@ const api = (() => {
   }
 
   async function getOwnProfile() {
-    const response = await fetch(`${BASE_URL}/users/me`)
+    const response = await _fetchWithAuth(`${BASE_URL}/users/me`)
 
     const responseJson = await response.json()
 
