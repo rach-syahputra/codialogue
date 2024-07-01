@@ -6,7 +6,7 @@ function threadsReducer(threads = [], action = {}) {
       return action.payload.threads
     case ActionType.ADD_THREAD:
       return [action.payload.threads, ...threads]
-    case ActionType.TOGGLE_VOTE_UP_THREAD:
+    case ActionType.TOGGLE_UP_VOTE_THREAD:
       return threads.map((thread) => {
         if (thread.id === action.payload.threadId) {
           return {
@@ -14,9 +14,10 @@ function threadsReducer(threads = [], action = {}) {
             upVotesBy: [...thread.upVotesBy, action.payload.userId]
           }
         }
+
         return thread
       })
-    case ActionType.TOGGLE_VOTE_DOWN_THREAD:
+    case ActionType.TOGGLE_DOWN_VOTE_THREAD:
       return threads.map((thread) => {
         if (thread.id === action.payload.threadId) {
           return {
@@ -24,6 +25,23 @@ function threadsReducer(threads = [], action = {}) {
             downVotesBy: [...thread.downVotesBy, action.payload.userId]
           }
         }
+
+        return thread
+      })
+    case ActionType.TOGGLE_NEUTRAL_VOTE_THREAD:
+      return threads.map((thread) => {
+        if (thread.id === action.payload.threadId) {
+          return {
+            ...thread,
+            upVotesBy: thread.upVotesBy.includes(action.payload.userId)
+              ? thread.upVotesBy.filter((id) => id !== action.payload.userId)
+              : [...thread.upVotesBy, action.payload.userId],
+            downVotesBy: thread.downVotesBy.includes(action.payload.userId)
+              ? thread.downVotesBy.filter((id) => id !== action.payload.userId)
+              : [...thread.downVotesBy, action.payload.userId],
+          }
+        }
+
         return thread
       })
     default:
