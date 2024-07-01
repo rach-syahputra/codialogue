@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const ThreadsList = ({ threads }) => {
   return (
-    <div className='flex flex-col m-auto w-[1024px]'>
+    <div className='flex flex-col ml-[200px] px-8'>
       {threads.map((thread) => (
         <ThreadItem {...thread} key={thread.id} />
       ))}

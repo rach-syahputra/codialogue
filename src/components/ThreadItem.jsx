@@ -12,7 +12,7 @@ const ThreadItem = ({ id, title, body, category }) => {
         <span>username</span>
         <span>•</span>
         <span className='text-gray-400'>12 days ago</span>
-        <div className='bg-gray-300 px-2 py-1 rounded-md'>Category</div>
+        <div className='bg-gray-300 px-2 py-1 rounded-md text-xs'>Category</div>
       </div>
 
       <h1 className='font-bold text-xl'>This is the title of a thread</h1>
