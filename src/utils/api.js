@@ -1,5 +1,5 @@
 const api = (() => {
-  const BASE_URL = 'https://openspace-api.netlify.app/v1'
+  const BASE_URL = 'https://forum-api.dicoding.dev/v1'
 
   function getAccessToken() {
     return localStorage.getItem('accessToken')
@@ -39,7 +39,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { user } } = responseJson
+    const {
+      data: { user },
+    } = responseJson
 
     return user
   }
@@ -64,7 +66,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { token } } = responseJson
+    const {
+      data: { token },
+    } = responseJson
 
     return token
   }
@@ -80,7 +84,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { user } } = responseJson
+    const {
+      data: { user },
+    } = responseJson
 
     return user
   }
@@ -96,7 +102,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { users } } = responseJson
+    const {
+      data: { users },
+    } = responseJson
 
     return users
   }
@@ -112,7 +120,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { threads } } = responseJson
+    const {
+      data: { threads },
+    } = responseJson
 
     return threads
   }
@@ -128,7 +138,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { detailThread } } = responseJson
+    const {
+      data: { detailThread },
+    } = responseJson
 
     return detailThread
   }
@@ -142,7 +154,7 @@ const api = (() => {
       body: JSON.stringify({
         title,
         body,
-        category
+        category,
       }),
     })
 
@@ -154,7 +166,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { thread } } = responseJson
+    const {
+      data: { thread },
+    } = responseJson
 
     return thread
   }
@@ -166,7 +180,7 @@ const api = (() => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        content
+        content,
       }),
     })
 
@@ -178,7 +192,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { comment } } = responseJson
+    const {
+      data: { comment },
+    } = responseJson
 
     return comment
   }
@@ -188,7 +204,7 @@ const api = (() => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
     })
 
     const responseJson = await response.json()
@@ -199,7 +215,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { vote } } = responseJson
+    const {
+      data: { vote },
+    } = responseJson
 
     return vote
   }
@@ -209,7 +227,7 @@ const api = (() => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
     })
 
     const responseJson = await response.json()
@@ -220,7 +238,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { vote } } = responseJson
+    const {
+      data: { vote },
+    } = responseJson
 
     return vote
   }
@@ -230,7 +250,7 @@ const api = (() => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
     })
 
     const responseJson = await response.json()
@@ -241,18 +261,23 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { vote } } = responseJson
+    const {
+      data: { vote },
+    } = responseJson
 
     return vote
   }
 
   async function upVoteComment({ threadId, commentId }) {
-    const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await _fetchWithAuth(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
-    })
+    )
 
     const responseJson = await response.json()
 
@@ -262,18 +287,23 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { vote } } = responseJson
+    const {
+      data: { vote },
+    } = responseJson
 
     return vote
   }
 
   async function downVoteComment({ threadId, commentId }) {
-    const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await _fetchWithAuth(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
-    })
+    )
 
     const responseJson = await response.json()
 
@@ -283,18 +313,23 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { vote } } = responseJson
+    const {
+      data: { vote },
+    } = responseJson
 
     return vote
   }
 
   async function neutralizeCommentVote({ threadId, commentId }) {
-    const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await _fetchWithAuth(
+      `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
-    })
+    )
 
     const responseJson = await response.json()
 
@@ -304,7 +339,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { vote } } = responseJson
+    const {
+      data: { vote },
+    } = responseJson
 
     return vote
   }
@@ -320,7 +357,9 @@ const api = (() => {
       throw new Error(message)
     }
 
-    const { data: { leaderboards } } = responseJson
+    const {
+      data: { leaderboards },
+    } = responseJson
 
     return leaderboards
   }
@@ -343,7 +382,7 @@ const api = (() => {
     upVoteComment,
     downVoteComment,
     neutralizeCommentVote,
-    getLeaderboard
+    getLeaderboard,
   }
 })()
 
