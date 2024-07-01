@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import api from '../../utils/api'
 
 const ActionType = {
@@ -47,12 +48,16 @@ function toggleVoteDownThreadActionCreator({ threadId, userId }) {
 
 function asyncAddThread({ title, body, category }) {
   return async (dispatch) => {
+    dispatch(showLoading())
+
     try {
       const thread = await api.createThread({ title, body, category })
       dispatch(addThreadActionCreator(thread))
     } catch (error) {
       alert(error.message)
     }
+
+    dispatch(hideLoading())
   }
 }
 
@@ -61,12 +66,16 @@ function asyncToggleUpVoteThread(threadId) {
     const { authUser } = getState()
     dispatch(toggleVoteUpThreadActionCreator({ threadId, userId: authUser.id }))
 
+    dispatch(showLoading())
+
     try {
       await api.upVoteThread(threadId)
     } catch (error) {
       alert(error.message)
       dispatch(toggleVoteUpThreadActionCreator({ threadId, userId: authUser.id }))
     }
+
+    dispatch(hideLoading())
   }
 }
 
@@ -75,12 +84,16 @@ function asyncToggleDownVoteThread(threadId) {
     const { authUser } = getState()
     dispatch(toggleVoteDownThreadActionCreator({ threadId, userId: authUser.id }))
 
+    dispatch(showLoading())
+
     try {
       await api.downVoteThread(threadId)
     } catch (error) {
       alert(error.message)
       dispatch(toggleVoteDownThreadActionCreator({ threadId, userId: authUser.id }))
     }
+
+    dispatch(hideLoading())
   }
 }
 
