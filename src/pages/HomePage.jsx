@@ -19,7 +19,7 @@ const HomePage = () => {
   }))
 
   return (
-    <div className='mt-[70px]'>
+    <div className='mt-[70px] pb-4'>
       <Navbar />
       <div className='w-[1024px] m-auto'>
         <Sidebar />

@@ -58,7 +58,7 @@ const ThreadItem = ({
   )
 }
 
-const ownerShape = {
+export const ownerShape = {
   id: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -73,11 +73,11 @@ export const threadItemShape = {
   owner: PropTypes.shape(ownerShape).isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  totalComments: PropTypes.number,
 }
 
 ThreadItem.propTypes = {
   ...threadItemShape,
+  totalComments: PropTypes.number,
 }
 
 export default ThreadItem

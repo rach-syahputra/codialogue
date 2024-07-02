@@ -1,11 +1,16 @@
 import React from 'react'
+import useInput from '../hooks/useInput'
+import { useDispatch } from 'react-redux'
 
-const s = () => {
+const CommentBox = () => {
+  const [commentInput, onChangeCommentInput] = useInput('')
+  const dispatch = useDispatch()
+
   return (
     <div className='flex flex-col gap-4'>
       <textarea
-        name=''
-        id=''
+        value={commentInput}
+        onChange={onChangeCommentInput}
         className='w-full h-[100px] px-4 py-2 text-sm border border-gray-400'
         placeholder='Add a comment'
       ></textarea>
@@ -21,4 +26,4 @@ const s = () => {
   )
 }
 
-export default s
+export default CommentBox
