@@ -6,19 +6,29 @@ import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 
 const HomePage = () => {
-  const threads = useSelector((state) => state.threads)
   const dispatch = useDispatch()
+  const { threads, users } = useSelector((state) => state)
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads())
   }, [])
+
+  useEffect(() => {
+    console.log('threads ', threads)
+    console.log('users ', users)
+  }, [threads, users])
+
+  const threadsList = threads?.map((thread) => ({
+    ...thread,
+    owner: users?.find((user) => user.id === thread.ownerId),
+  }))
 
   return (
     <div className='mt-[70px]'>
       <Navbar />
       <div className='w-[1024px] m-auto'>
         <Sidebar />
-        <ThreadsList threads={threads} />
+        <ThreadsList threads={threadsList} />
       </div>
     </div>
   )
