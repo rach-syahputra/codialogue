@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar'
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  const { threads, users } = useSelector((state) => state)
+  const { threads = [], users = [] } = useSelector((state) => state)
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads())
@@ -15,7 +15,7 @@ const HomePage = () => {
 
   const threadsList = threads?.map((thread) => ({
     ...thread,
-    owner: users?.find((user) => user.id === thread.ownerId),
+    owner: users?.find((user) => user.id === thread?.ownerId),
   }))
 
   return (
@@ -23,7 +23,7 @@ const HomePage = () => {
       <Navbar />
       <div className='w-[1024px] m-auto'>
         <Sidebar />
-        <ThreadsList threads={threadsList} />
+        {threadsList && <ThreadsList threads={threadsList} />}
       </div>
     </div>
   )

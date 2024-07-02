@@ -23,8 +23,4 @@ function asyncRegisterUser({ id, name, password }) {
   }
 }
 
-export {
-  ActionType,
-  receiveUsersActionCreator,
-  asyncRegisterUser,
-}
+export { ActionType, receiveUsersActionCreator, asyncRegisterUser }

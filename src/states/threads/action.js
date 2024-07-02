@@ -6,15 +6,15 @@ const ActionType = {
   ADD_THREAD: 'ADD_THREAD',
   TOGGLE_UP_VOTE_THREAD: 'TOGGLE_UP_VOTE_THREAD',
   TOGGLE_DOWN_VOTE_THREAD: 'TOGGLE_DOWN_VOTE_THREAD',
-  TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD'
+  TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD',
 }
 
 function receiveThreadsActionCreator(threads) {
   return {
     type: ActionType.RECEIVE_THREADS,
     payload: {
-      threads
-    }
+      threads,
+    },
   }
 }
 
@@ -22,8 +22,8 @@ function addThreadActionCreator(thread) {
   return {
     type: ActionType.ADD_THREAD,
     payload: {
-      thread
-    }
+      thread,
+    },
   }
 }
 
@@ -32,8 +32,8 @@ function toggleUpVoteThreadActionCreator({ threadId, userId }) {
     type: ActionType.TOGGLE_UP_VOTE_THREAD,
     payload: {
       threadId,
-      userId
-    }
+      userId,
+    },
   }
 }
 
@@ -42,8 +42,8 @@ function toggleDownVoteThreadActionCreator({ threadId, userId }) {
     type: ActionType.TOGGLE_DOWN_VOTE_THREAD,
     payload: {
       threadId,
-      userId
-    }
+      userId,
+    },
   }
 }
 
@@ -52,8 +52,8 @@ function toggleNeutralVoteThreadActionCreator({ threadId, userId }) {
     type: ActionType.TOGGLE_NEUTRAL_VOTE_THREAD,
     payload: {
       threadId,
-      userId
-    }
+      userId,
+    },
   }
 }
 
@@ -136,5 +136,5 @@ export {
   asyncAddThread,
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
-  asyncToggleNeutralVoteThread
+  asyncToggleNeutralVoteThread,
 }
