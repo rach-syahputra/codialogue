@@ -13,11 +13,6 @@ const HomePage = () => {
     dispatch(asyncPopulateUsersAndThreads())
   }, [])
 
-  useEffect(() => {
-    console.log('threads ', threads)
-    console.log('users ', users)
-  }, [threads, users])
-
   const threadsList = threads?.map((thread) => ({
     ...thread,
     owner: users?.find((user) => user.id === thread.ownerId),
