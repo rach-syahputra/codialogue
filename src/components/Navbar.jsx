@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/CoDialogue.png'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import firstLetter from '../utils/firstLetter'
-import { asyncSetAuthUser, asyncUnsetAuthUser } from '../states/authUser/action'
+import { asyncUnsetAuthUser } from '../states/authUser/action'
 import { useNavigate } from 'react-router-dom'
 import plus from '../assets/plus.png'
-import api from '../utils/api'
 
 const Navbar = () => {
   const [openProfileMenu, setOpenProfileMenu] = useState(false)

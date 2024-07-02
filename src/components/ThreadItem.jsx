@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import arrowUp from '../assets/arrow-up.png'
 import arrowDown from '../assets/arrow-down.png'
+import arrowUpToggled from '../assets/arrow-up-toggled.png'
+import arrowDownToggled from '../assets/arrow-down-toggled.png'
 import chat from '../assets/chat.png'
 import timeSince from '../utils/timeSince'
 import truncateBody from '../utils/truncateBody'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {
+  asyncToggleDownVoteThread,
+  asyncToggleNeutralVoteThread,
+  asyncToggleUpVoteThread,
+} from '../states/threads/action'
 
 const ThreadItem = ({
   id,
@@ -18,10 +26,46 @@ const ThreadItem = ({
   downVotesBy,
   totalComments,
 }) => {
+  const [toggleUpVote, setToggleUpVote] = useState(false)
+  const [toggleDownVote, setToggleDownVote] = useState(false)
+
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const onNavigate = (id) => {
     navigate(`/threads/${id}`)
+  }
+
+  const onUpVote = (id) => {
+    if (toggleUpVote) {
+      dispatch(asyncToggleNeutralVoteThread(id))
+      setToggleUpVote(false)
+    } else if (toggleDownVote) {
+      dispatch(asyncToggleNeutralVoteThread(id))
+      dispatch(asyncToggleUpVoteThread(id))
+      setToggleUpVote(true)
+      setToggleDownVote(false)
+    } else {
+      dispatch(asyncToggleUpVoteThread(id))
+      setToggleUpVote(true)
+      setToggleDownVote(false)
+    }
+  }
+
+  const onDownVote = (id) => {
+    if (toggleDownVote) {
+      dispatch(asyncToggleNeutralVoteThread(id))
+      setToggleDownVote(false)
+    } else if (toggleUpVote) {
+      dispatch(asyncToggleNeutralVoteThread(id))
+      dispatch(asyncToggleDownVoteThread(id))
+      setToggleDownVote(true)
+      setToggleUpVote(false)
+    } else {
+      dispatch(asyncToggleDownVoteThread(id))
+      setToggleDownVote(true)
+      setToggleUpVote(false)
+    }
   }
 
   return (
@@ -42,11 +86,23 @@ const ThreadItem = ({
 
       <div className='flex gap-4'>
         <div className='flex gap-1 items-center'>
-          <img src={arrowUp} alt='' className='w-4 h-4' />
+          <button onClick={() => onUpVote(id)}>
+            {toggleUpVote ? (
+              <img src={arrowUpToggled} alt='' className='w-4 h-4' />
+            ) : (
+              <img src={arrowUp} alt='' className='w-4 h-4' />
+            )}
+          </button>
           <span className='text-sm'>{upVotesBy?.length}</span>
         </div>
         <div className='flex gap-1 items-center'>
-          <img src={arrowDown} alt='' className='w-4 h-4' />
+          <button onClick={() => onDownVote(id)}>
+            {toggleDownVote ? (
+              <img src={arrowDownToggled} alt='' className='w-4 h-4' />
+            ) : (
+              <img src={arrowDown} alt='' className='w-4 h-4' />
+            )}
+          </button>
           <span className='text-sm'>{downVotesBy?.length}</span>
         </div>
         <div className='flex gap-1 items-center cursor-pointer' onClick={() => onNavigate(id)}>
