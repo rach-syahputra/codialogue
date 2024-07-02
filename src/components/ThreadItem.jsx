@@ -5,6 +5,7 @@ import arrowDown from '../assets/arrow-down.png'
 import chat from '../assets/chat.png'
 import timeSince from '../utils/timeSince'
 import truncateBody from '../utils/truncateBody'
+import { useNavigate } from 'react-router-dom'
 
 const ThreadItem = ({
   id,
@@ -17,6 +18,12 @@ const ThreadItem = ({
   downVotesBy,
   totalComments,
 }) => {
+  const navigate = useNavigate()
+
+  const onNavigate = (id) => {
+    navigate(`/threads/${id}`)
+  }
+
   return (
     <div className='flex flex-col py-6 gap-1 border-b-[1px] border-gray-300'>
       <div className='flex items-center gap-2 text-sm'>
@@ -27,7 +34,9 @@ const ThreadItem = ({
         <div className='bg-gray-300 px-2 py-1 rounded-md text-xs'>{category}</div>
       </div>
 
-      <h1 className='font-bold text-xl cursor-pointer'>{title}</h1>
+      <h1 className='font-bold text-xl cursor-pointer' onClick={() => onNavigate(id)}>
+        {title}
+      </h1>
 
       <p>{truncateBody(body, 200)}</p>
 
@@ -40,7 +49,7 @@ const ThreadItem = ({
           <img src={arrowDown} alt='' className='w-4 h-4' />
           <span className='text-sm'>{downVotesBy?.length}</span>
         </div>
-        <div className='flex gap-1 items-center cursor-pointer'>
+        <div className='flex gap-1 items-center cursor-pointer' onClick={() => onNavigate(id)}>
           <img src={chat} alt='' className='w-5 h-5' />
           <span className='text-sm'>{totalComments}</span>
         </div>
