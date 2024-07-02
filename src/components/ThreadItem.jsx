@@ -72,7 +72,7 @@ const ThreadItem = ({
     <div className='flex flex-col py-6 gap-1 border-b-[1px] border-gray-300'>
       <div className='flex items-center gap-2 text-sm'>
         <img src={owner?.avatar} alt='' className='w-6 h-6 rounded-full' />
-        <span>{owner?.name}</span>
+        <span className='font-medium'>{owner?.name}</span>
         <span>•</span>
         <span className='text-gray-400'>{timeSince(createdAt)}</span>
         <div className='bg-gray-300 px-2 py-1 rounded-md text-xs'>{category}</div>

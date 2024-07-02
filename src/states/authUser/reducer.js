@@ -1,6 +1,8 @@
-import { ActionType } from "./action";
+import { ActionType } from './action'
 
-function authUserReducer(authUser = null, action = {}) {
+const authUserFromStorage = JSON.parse(localStorage.getItem('auth-user'))
+
+function authUserReducer(authUser = authUserFromStorage, action = {}) {
   switch (action.type) {
     case ActionType.SET_AUTH_USER:
       return action.payload.authUser
