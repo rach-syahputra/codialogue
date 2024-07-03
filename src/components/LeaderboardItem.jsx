@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { userShape } from './LeaderboardsList'
 
 const LeaderboardItem = ({ user, score }) => {
   return (
@@ -14,6 +13,13 @@ const LeaderboardItem = ({ user, score }) => {
       </li>
     </ul>
   )
+}
+
+export const userShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
 }
 
 LeaderboardItem.propTypes = {
