@@ -13,9 +13,10 @@ import {
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
   asyncToggleNeutralVoteThread,
-} from '../states/threads/action'
+} from '../states/threadDetail/action'
+import { threadItemShape } from './ThreadItem'
 
-const ThreadItem = ({
+const ThreadDetailItem = ({
   id,
   title,
   body,
@@ -59,6 +60,7 @@ const ThreadItem = ({
   }
 
   const onUpVote = (id) => {
+    console.log('id within onUpVote ', id)
     if (toggleUpVote) {
       dispatch(asyncToggleNeutralVoteThread(id))
       setToggleUpVote(false)
@@ -142,20 +144,8 @@ export const ownerShape = {
   name: PropTypes.string.isRequired,
 }
 
-export const threadItemShape = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  owner: PropTypes.shape(ownerShape).isRequired,
-  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
-
-ThreadItem.propTypes = {
+ThreadDetailItem.propTypes = {
   ...threadItemShape,
-  totalComments: PropTypes.number,
 }
 
-export default ThreadItem
+export default ThreadDetailItem
