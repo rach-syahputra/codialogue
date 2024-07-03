@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import useInput from '../hooks/useInput'
-import { Link } from 'react-router-dom'
 
-const LoginForm = ({ login }) => {
+const RegisterForm = ({ register }) => {
+  const [name, onNameChange] = useInput('')
   const [email, onEmailChange] = useInput('')
   const [password, onPasswordChange] = useInput('')
 
@@ -11,9 +11,16 @@ const LoginForm = ({ login }) => {
     <form
       action=''
       className='flex flex-col gap-4 w-[300px]'
-      onSubmit={() => login({ email, password })}
+      onSubmit={() => register({ name, email, password })}
     >
       <div className='flex flex-col gap-2 text-sm'>
+        <input
+          type='text'
+          className='border border-black rounded-sm p-2'
+          value={name}
+          onChange={onNameChange}
+          placeholder='Name'
+        />
         <input
           type='text'
           className='border border-black rounded-sm p-2'
@@ -30,20 +37,13 @@ const LoginForm = ({ login }) => {
         />
       </div>
 
-      <button className='px-4 py-2 text-white text-sm bg-black rounded-sm'>Login</button>
-
-      <p className='text-sm'>
-        Don&apos;t have an account yet?{' '}
-        <span className='text-blue-600'>
-          <Link to='/register'>Sign Up</Link>
-        </span>
-      </p>
+      <button className='px-4 py-2 text-white text-sm bg-black rounded-sm'>Register</button>
     </form>
   )
 }
 
-LoginForm.propTypes = {
-  login: PropTypes.func.isRequired,
+RegisterForm.propTypes = {
+  register: PropTypes.func.isRequired,
 }
 
-export default LoginForm
+export default RegisterForm
