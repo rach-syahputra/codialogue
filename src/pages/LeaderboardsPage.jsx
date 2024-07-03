@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar'
 import LeaderboardsList from '../components/LeaderboardsList'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncReceiveLeaderboards } from '../states/leaderboards/action'
+import Loading from '../components/Loading'
 
 const LeaderboardsPage = () => {
   const leaderboards = useSelector((state) => state.leaderboards)
@@ -20,6 +21,7 @@ const LeaderboardsPage = () => {
   return (
     <div className='mt-[70px] pb-4'>
       <Navbar />
+      <Loading />
       <div className='w-[1024px] m-auto'>
         <Sidebar currentPage='leaderboards' />
         {leaderboards && <LeaderboardsList leaderboards={leaderboards} />}
