@@ -203,7 +203,7 @@ function asyncToggleDownVoteComment({ threadId, commentId }) {
     dispatch(showLoading())
 
     try {
-      await api.upVoteComment({ threadId, commentId })
+      await api.downVoteComment({ threadId, commentId })
     } catch (error) {
       alert(error.message)
       dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
