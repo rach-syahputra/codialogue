@@ -56,8 +56,8 @@ const Sidebar = ({ activeCategory, handleActiveCategoryChange, currentPage }) =>
 }
 
 Sidebar.propTypes = {
-  activeCategory: PropTypes.string.isRequired,
-  handleActiveCategoryChange: PropTypes.func.isRequired,
+  activeCategory: PropTypes.string,
+  handleActiveCategoryChange: PropTypes.func,
   currentPage: PropTypes.string.isRequired,
 }
 

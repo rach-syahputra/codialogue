@@ -1,6 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import LeaderboardItem from './LeaderboardItem'
 
-const LeaderboardsList = () => {
+const LeaderboardsList = ({ leaderboards }) => {
   return (
     <div className='flex flex-col gap-4 ml-[200px] px-8 py-4'>
       <h1 className='text-lg font-bold'>Active User Standings</h1>
@@ -9,25 +11,27 @@ const LeaderboardsList = () => {
           <span>User</span>
           <span>Score</span>
         </div>
-        <ul className='flex flex-col gap-2'>
-          <li className='flex items-center justify-between'>
-            <div className='flex gap-2 items-center'>
-              <div className='bg-black w-4 h-4 rounded-full'></div>
-              <span>User Name</span>
-            </div>
-            <span>100</span>
-          </li>
-          <li className='flex items-center justify-between'>
-            <div className='flex gap-2 items-center'>
-              <div className='bg-black w-4 h-4 rounded-full'></div>
-              <span>User Name</span>
-            </div>
-            <span>100</span>
-          </li>
-        </ul>
+        {leaderboards.map((leaderboard) => (
+          <LeaderboardItem {...leaderboard} key={leaderboard.user.id} />
+        ))}
       </div>
     </div>
   )
+}
+
+export const userShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+}
+
+const leaderboardShape = {
+  user: PropTypes.shape(userShape).isRequired,
+}
+
+LeaderboardsList.propTypes = {
+  leaderboards: PropTypes.arrayOf(PropTypes.shape(leaderboardShape)).isRequired,
 }
 
 export default LeaderboardsList
