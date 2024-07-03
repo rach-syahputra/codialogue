@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage'
 import ThreadDetailPage from './pages/ThreadDetailPage'
 import CreateThreadPage from './pages/CreateThreadPage'
 import { useSelector } from 'react-redux'
+import LeaderboardsPage from './pages/LeaderboardsPage'
 
 function App() {
   const { isPreload = false } = useSelector((state) => state)
@@ -23,6 +24,7 @@ function App() {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/threads/new-thread' element={<CreateThreadPage />} />
             <Route path='/threads/:id' element={<ThreadDetailPage />} />
+            <Route path='/leaderboards' element={<LeaderboardsPage />} />
           </Routes>
         </main>
       </div>

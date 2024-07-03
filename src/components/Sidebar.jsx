@@ -35,7 +35,7 @@ const Sidebar = ({ activeCategory, handleActiveCategoryChange }) => {
         >
           <img src={podium} alt='' className='w-4 h-4' />
           <span>
-            <Link to='/'>Leaderboards</Link>
+            <Link to='/leaderboards'>Leaderboards</Link>
           </span>
         </li>
       </ul>
