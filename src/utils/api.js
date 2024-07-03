@@ -346,7 +346,7 @@ const api = (() => {
     return vote
   }
 
-  async function getLeaderboard() {
+  async function getLeaderboards() {
     const response = await fetch(`${BASE_URL}/leaderboards`)
 
     const responseJson = await response.json()
@@ -382,7 +382,7 @@ const api = (() => {
     upVoteComment,
     downVoteComment,
     neutralizeCommentVote,
-    getLeaderboard,
+    getLeaderboards,
   }
 })()
 
