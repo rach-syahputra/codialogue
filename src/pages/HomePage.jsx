@@ -41,6 +41,7 @@ const HomePage = () => {
         <Sidebar
           activeCategory={activeCategory}
           handleActiveCategoryChange={handleActiveCategoryChange}
+          currentPage='threads'
         />
         {threadsList && <ThreadsList threads={threadsList} activeCategory={activeCategory} />}
       </div>

@@ -8,7 +8,7 @@ const LeaderboardsPage = () => {
     <div className='mt-[70px] pb-4'>
       <Navbar />
       <div className='w-[1024px] m-auto'>
-        <Sidebar />
+        <Sidebar currentPage='leaderboards' />
         <LeaderboardsList />
       </div>
     </div>
