@@ -19,15 +19,15 @@ const api = (() => {
     })
   }
 
-  async function register({ id, name, password }) {
+  async function register({ name, email, password }) {
     const response = await fetch(`${BASE_URL}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id,
         name,
+        email,
         password,
       }),
     })
