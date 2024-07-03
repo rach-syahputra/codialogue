@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncPopulateUsersAndThreads } from '../states/shared/action'
 import ThreadsList from '../components/ThreadsList'
@@ -7,8 +7,9 @@ import Sidebar from '../components/Sidebar'
 import { asyncSetCategories } from '../states/categories/action'
 
 const HomePage = () => {
+  const [activeCategory, setActiveCategory] = useState('')
+  const { threads = [], users = [] } = useSelector((state) => state)
   const dispatch = useDispatch()
-  const { threads = [], users = [], categories } = useSelector((state) => state)
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads())
@@ -20,6 +21,14 @@ const HomePage = () => {
     dispatch(asyncSetCategories(categories))
   }, [threads])
 
+  const handleActiveCategoryChange = (category) => {
+    if (category === activeCategory) {
+      setActiveCategory('')
+    } else {
+      setActiveCategory(category)
+    }
+  }
+
   const threadsList = threads?.map((thread) => ({
     ...thread,
     owner: users?.find((user) => user.id === thread?.ownerId),
@@ -29,8 +38,11 @@ const HomePage = () => {
     <div className='mt-[70px] pb-4'>
       <Navbar />
       <div className='w-[1024px] m-auto'>
-        <Sidebar />
-        {threadsList && <ThreadsList threads={threadsList} />}
+        <Sidebar
+          activeCategory={activeCategory}
+          handleActiveCategoryChange={handleActiveCategoryChange}
+        />
+        {threadsList && <ThreadsList threads={threadsList} activeCategory={activeCategory} />}
       </div>
     </div>
   )
