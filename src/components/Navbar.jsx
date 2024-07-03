@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../assets/CoDialogue.png'
 import { useDispatch, useSelector } from 'react-redux'
-import firstLetter from '../utils/firstLetter'
 import { asyncUnsetAuthUser } from '../states/authUser/action'
 import { useNavigate } from 'react-router-dom'
 import plus from '../assets/plus.png'
@@ -39,7 +38,12 @@ const Navbar = () => {
               <span>Create Thread</span>
             </div>
             <div className='relative'>
-              <img src={authUser.avatar} alt='' className='w-7 h-7 rounded-full' />
+              <img
+                src={authUser.avatar}
+                alt=''
+                className='w-7 h-7 rounded-full'
+                onClick={handleOpenProfileMenu}
+              />
               {openProfileMenu && (
                 <button
                   className='absolute top-7 right-0 border border-gray-300 px-4 py-2 bg-white cursor-pointer'
