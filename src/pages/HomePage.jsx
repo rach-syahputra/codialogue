@@ -4,14 +4,21 @@ import { asyncPopulateUsersAndThreads } from '../states/shared/action'
 import ThreadsList from '../components/ThreadsList'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
+import { asyncSetCategories } from '../states/categories/action'
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  const { threads = [], users = [] } = useSelector((state) => state)
+  const { threads = [], users = [], categories } = useSelector((state) => state)
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads())
   }, [])
+
+  useEffect(() => {
+    const categories = [...new Set(threads.map((thread) => thread.category))]
+
+    dispatch(asyncSetCategories(categories))
+  }, [threads])
 
   const threadsList = threads?.map((thread) => ({
     ...thread,

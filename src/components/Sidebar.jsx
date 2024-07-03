@@ -2,8 +2,11 @@ import React from 'react'
 import threads from '../assets/threads.png'
 import podium from '../assets/podium.png'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
+  const categories = useSelector((state) => state.categories)
+
   return (
     <div className='flex flex-col gap-6 w-[200px] h-full fixed p-4 border-r-[1px] border-gray-300'>
       <div className='flex flex-col gap-2'>
@@ -22,9 +25,9 @@ const Sidebar = () => {
       <div className='flex flex-col'>
         <h2 className='text-gray-400'>CATEGORIES</h2>
         <div className='flex flex-col gap-1 p-2'>
-          <span>redux</span>
-          <span>perkenalan</span>
-          <span>react</span>
+          {categories.map((category) => (
+            <span key={category}>{category}</span>
+          ))}
         </div>
       </div>
     </div>

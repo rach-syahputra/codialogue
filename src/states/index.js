@@ -4,6 +4,7 @@ import isPreloadReducer from './isPreload/reducer'
 import threadsReducer from './threads/reducer'
 import threadDetailReducer from './threadDetail/reducer'
 import usersReducer from './users/reducer'
+import categoriesReducer from './categories/reducer'
 import { loadingBarReducer } from 'react-redux-loading-bar'
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     threads: threadsReducer,
     threadDetail: threadDetailReducer,
     users: usersReducer,
+    categories: categoriesReducer,
     loadingBar: loadingBarReducer,
   },
   middleware: (getDefaultMiddleware) =>
