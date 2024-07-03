@@ -5,6 +5,7 @@ import ThreadsList from '../components/ThreadsList'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { asyncSetCategories } from '../states/categories/action'
+import Loading from '../components/Loading'
 
 const HomePage = () => {
   const [activeCategory, setActiveCategory] = useState('')
@@ -37,6 +38,7 @@ const HomePage = () => {
   return (
     <div className='mt-[70px] pb-4'>
       <Navbar />
+      <Loading />
       <div className='w-[1024px] m-auto'>
         <Sidebar
           activeCategory={activeCategory}

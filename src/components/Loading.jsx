@@ -3,7 +3,7 @@ import LoadingBar from 'react-redux-loading-bar'
 
 const Loading = () => {
   return (
-    <div>
+    <div className='sticky top-0'>
       <LoadingBar />
     </div>
   )

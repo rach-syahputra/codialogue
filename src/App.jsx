@@ -7,6 +7,7 @@ import CreateThreadPage from './pages/CreateThreadPage'
 import { useDispatch, useSelector } from 'react-redux'
 import LeaderboardsPage from './pages/LeaderboardsPage'
 import { asyncPreloadProcess } from './states/isPreload/action'
+import Loading from './components/Loading'
 
 function App() {
   const { isPreload = false } = useSelector((state) => state)
@@ -22,7 +23,8 @@ function App() {
 
   return (
     <>
-      <div className='app-container'>
+      <Loading />
+      <main>
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<LoginPage />} />
@@ -30,7 +32,7 @@ function App() {
           <Route path='/threads/:id' element={<ThreadDetailPage />} />
           <Route path='/leaderboards' element={<LeaderboardsPage />} />
         </Routes>
-      </div>
+      </main>
     </>
   )
 }

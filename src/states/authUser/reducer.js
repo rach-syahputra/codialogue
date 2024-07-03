@@ -1,7 +1,5 @@
 import { ActionType } from './action'
 
-// const authUserFromStorage = JSON.parse(localStorage.getItem('auth-user'))
-
 function authUserReducer(authUser = null, action = {}) {
   switch (action.type) {
     case ActionType.SET_AUTH_USER:

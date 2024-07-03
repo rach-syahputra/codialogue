@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar'
 import CommentBox from '../components/CommentBox'
 import CommentsList from '../components/CommentsList'
 import ThreadDetailItem from '../components/ThreadDetailItem'
+import Loading from '../components/Loading'
 
 const ThreadDetailPage = () => {
   const { id } = useParams()
@@ -20,6 +21,7 @@ const ThreadDetailPage = () => {
   return (
     <div className='mt-[70px] pb-4'>
       <Navbar />
+      <Loading />
       <div className='w-[1024px] m-auto'>
         <Sidebar />
         {threadDetail && (

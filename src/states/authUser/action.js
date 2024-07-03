@@ -35,7 +35,6 @@ function asyncSetAuthUser({ email, password }) {
       const authUser = await api.getOwnProfile()
 
       dispatch(setAuthUserActionCreator(authUser))
-      // localStorage.setItem('auth-user', JSON.stringify(authUser))
     } catch (error) {
       alert(error.message)
     }
@@ -50,7 +49,6 @@ function asyncUnsetAuthUser() {
 
     dispatch(unsetAuthUserActionCreator())
     api.putAccessToken('')
-    // localStorage.setItem('auth-user', null)
 
     dispatch(hideLoading())
   }
