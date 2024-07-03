@@ -1,6 +1,7 @@
 import React from 'react'
 import threads from '../assets/threads.png'
 import podium from '../assets/podium.png'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -8,7 +9,9 @@ const Sidebar = () => {
       <div className='flex flex-col gap-2'>
         <div className='flex gap-2 items-center'>
           <img src={threads} alt='' className='w-4 h-4' />
-          <span>Threads</span>
+          <span>
+            <Link to='/'>Threads</Link>
+          </span>
         </div>
         <div className='flex gap-2 items-center'>
           <img src={podium} alt='' className='w-4 h-4' />
