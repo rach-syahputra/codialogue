@@ -25,6 +25,46 @@ function threadDetailReducer(threadDetail = null, action = {}) {
         upVotesBy: threadDetail.upVotesBy.filter((id) => id !== action.payload.userId),
         downVotesBy: threadDetail.downVotesBy.filter((id) => id !== action.payload.userId),
       }
+    case ActionType.TOGGLE_UP_VOTE_COMMENT:
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === action.payload.commentId) {
+            return {
+              ...comment,
+              upVotesBy: [...comment.upVotesBy, action.payload.userId],
+            }
+          }
+          return comment
+        }),
+      }
+    case ActionType.TOGGLE_DOWN_VOTE_COMMENT:
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === action.payload.commentId) {
+            return {
+              ...comment,
+              downVotesBy: [...comment.downVotesBy, action.payload.userId],
+            }
+          }
+          return comment
+        }),
+      }
+    case ActionType.TOGGLE_NEUTRAL_VOTE_COMMENT:
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === action.payload.commentId) {
+            return {
+              ...comment,
+              upVotesBy: comment.upVotesBy.filter((id) => id !== action.payload.userId),
+              downVotesBy: comment.downVotesBy.filter((id) => id !== action.payload.userId),
+            }
+          }
+          return comment
+        }),
+      }
     default:
       return threadDetail
   }

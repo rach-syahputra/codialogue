@@ -25,7 +25,6 @@ const ThreadDetailItem = ({
   owner,
   upVotesBy,
   downVotesBy,
-  totalComments,
 }) => {
   const [toggleUpVote, setToggleUpVote] = useState(false)
   const [toggleDownVote, setToggleDownVote] = useState(false)
@@ -34,12 +33,6 @@ const ThreadDetailItem = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('id', id)
-  }, [])
-
-  useEffect(() => {
-    console.log('upvotesby', upVotesBy)
-    console.log('authUser', authUser)
     const upVoteUserExist = upVotesBy.find((user) => user === authUser.id)
     const downVoteUserExist = downVotesBy.find((user) => user === authUser.id)
 
@@ -60,7 +53,6 @@ const ThreadDetailItem = ({
   }
 
   const onUpVote = (id) => {
-    console.log('id within onUpVote ', id)
     if (toggleUpVote) {
       dispatch(asyncToggleNeutralVoteThread(id))
       setToggleUpVote(false)
@@ -129,19 +121,9 @@ const ThreadDetailItem = ({
           </button>
           <span className='text-sm'>{downVotesBy?.length}</span>
         </div>
-        <div className='flex gap-1 items-center cursor-pointer' onClick={() => onNavigate(id)}>
-          <img src={chat} alt='' className='w-5 h-5' />
-          <span className='text-sm'>{totalComments}</span>
-        </div>
       </div>
     </div>
   )
-}
-
-export const ownerShape = {
-  id: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
 }
 
 ThreadDetailItem.propTypes = {

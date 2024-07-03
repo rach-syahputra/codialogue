@@ -7,6 +7,9 @@ const ActionType = {
   TOGGLE_UP_VOTE_THREAD: 'TOGGLE_UP_VOTE_THREAD_ON_THREAD_DETAIL',
   TOGGLE_DOWN_VOTE_THREAD: 'TOGGLE_DOWN_VOTE_THREAD_ON_THREAD_DETAIL',
   TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD_ON_THREAD_DETAIL',
+  TOGGLE_UP_VOTE_COMMENT: 'TOGGLE_UP_VOTE_COMMENT',
+  TOGGLE_DOWN_VOTE_COMMENT: 'TOGGLE_DOWN_VOTE_COMMENT',
+  TOGGLE_NEUTRAL_VOTE_COMMENT: 'TOGGLE_NEUTRAL_VOTE_COMMENT',
 }
 
 function receiveThreadDetailActionCreator(threadDetail) {
@@ -52,6 +55,39 @@ function toggleNeutralVoteThreadActionCreator({ threadId, userId }) {
     type: ActionType.TOGGLE_NEUTRAL_VOTE_THREAD,
     payload: {
       threadId,
+      userId,
+    },
+  }
+}
+
+function toggleUpVoteCommentActionCreator({ threadId, commentId, userId }) {
+  return {
+    type: ActionType.TOGGLE_UP_VOTE_COMMENT,
+    payload: {
+      threadId,
+      commentId,
+      userId,
+    },
+  }
+}
+
+function toggleDownVoteCommentActionCreator({ threadId, commentId, userId }) {
+  return {
+    type: ActionType.TOGGLE_DOWN_VOTE_COMMENT,
+    payload: {
+      threadId,
+      commentId,
+      userId,
+    },
+  }
+}
+
+function toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId }) {
+  return {
+    type: ActionType.TOGGLE_NEUTRAL_VOTE_COMMENT,
+    payload: {
+      threadId,
+      commentId,
       userId,
     },
   }
@@ -141,6 +177,60 @@ function asyncToggleNeutralVoteThread(threadId) {
   }
 }
 
+function asyncToggleUpVoteComment({ threadId, commentId }) {
+  return async (dispatch, getState) => {
+    const { authUser } = getState()
+    dispatch(toggleUpVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
+
+    dispatch(showLoading())
+
+    try {
+      await api.upVoteComment({ threadId, commentId })
+    } catch (error) {
+      alert(error.message)
+      dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
+    }
+
+    dispatch(hideLoading())
+  }
+}
+
+function asyncToggleDownVoteComment({ threadId, commentId }) {
+  return async (dispatch, getState) => {
+    const { authUser } = getState()
+    dispatch(toggleDownVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
+
+    dispatch(showLoading())
+
+    try {
+      await api.upVoteComment({ threadId, commentId })
+    } catch (error) {
+      alert(error.message)
+      dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
+    }
+
+    dispatch(hideLoading())
+  }
+}
+
+function asyncToggleNeutralVoteComment({ threadId, commentId }) {
+  return async (dispatch, getState) => {
+    const { authUser } = getState()
+    dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
+
+    dispatch(showLoading())
+
+    try {
+      await api.neutralizeCommentVote({ threadId, commentId })
+    } catch (error) {
+      alert(error.message)
+      dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
+    }
+
+    dispatch(hideLoading())
+  }
+}
+
 export {
   ActionType,
   receiveThreadDetailActionCreator,
@@ -149,4 +239,7 @@ export {
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
   asyncToggleNeutralVoteThread,
+  asyncToggleUpVoteComment,
+  asyncToggleDownVoteComment,
+  asyncToggleNeutralVoteComment,
 }

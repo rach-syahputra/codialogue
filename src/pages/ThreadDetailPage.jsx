@@ -11,7 +11,6 @@ import ThreadDetailItem from '../components/ThreadDetailItem'
 const ThreadDetailPage = () => {
   const { id } = useParams()
   const threadDetail = useSelector((state) => state.threadDetail)
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const ThreadDetailPage = () => {
             <ThreadDetailItem {...threadDetail} key={threadDetail.id} />
             <div className='flex flex-col gap-4'>
               <CommentBox threadId={id} />
-              <CommentsList comments={threadDetail.comments} />
+              <CommentsList threadId={id} comments={threadDetail.comments} />
             </div>
           </div>
         )}

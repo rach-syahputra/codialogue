@@ -33,12 +33,6 @@ const ThreadItem = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('id', id)
-  }, [])
-
-  useEffect(() => {
-    console.log('upvotesby', upVotesBy)
-    console.log('authUser', authUser)
     const upVoteUserExist = upVotesBy.find((user) => user === authUser.id)
     const downVoteUserExist = downVotesBy.find((user) => user === authUser.id)
 
