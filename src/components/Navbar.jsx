@@ -39,12 +39,7 @@ const Navbar = () => {
               <span>Create Thread</span>
             </div>
             <div className='relative'>
-              <div
-                className='flex items-center justify-center w-6 h-6 bg-black text-sm leading-[24px] text-white rounded-full cursor-pointer'
-                onClick={handleOpenProfileMenu}
-              >
-                {firstLetter(authUser.name)}
-              </div>
+              <img src={authUser.avatar} alt='' className='w-7 h-7 rounded-full' />
               {openProfileMenu && (
                 <button
                   className='absolute top-7 right-0 border border-gray-300 px-4 py-2 bg-white cursor-pointer'
