@@ -33,8 +33,8 @@ const ThreadItem = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const upVoteUserExist = upVotesBy.find((user) => user === authUser.id)
-    const downVoteUserExist = downVotesBy.find((user) => user === authUser.id)
+    const upVoteUserExist = upVotesBy.find((user) => user === authUser?.id)
+    const downVoteUserExist = downVotesBy.find((user) => user === authUser?.id)
 
     if (upVoteUserExist) {
       setToggleUpVote(true)
