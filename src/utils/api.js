@@ -1,35 +1,37 @@
+/* global localStorage, */
+
 const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1'
 
-  function getAccessToken() {
+  function getAccessToken () {
     return localStorage.getItem('accessToken')
   }
 
-  function putAccessToken(token) {
+  function putAccessToken (token) {
     return localStorage.setItem('accessToken', token)
   }
 
-  async function _fetchWithAuth(url, options = {}) {
+  async function _fetchWithAuth (url, options = {}) {
     return fetch(url, {
       ...options,
       headers: {
         ...options.headers,
-        Authorization: `Bearer ${getAccessToken()}`,
-      },
+        Authorization: `Bearer ${getAccessToken()}`
+      }
     })
   }
 
-  async function register({ name, email, password }) {
+  async function register ({ name, email, password }) {
     const response = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name,
         email,
-        password,
-      }),
+        password
+      })
     })
 
     const responseJson = await response.json()
@@ -40,22 +42,22 @@ const api = (() => {
     }
 
     const {
-      data: { user },
+      data: { user }
     } = responseJson
 
     return user
   }
 
-  async function login({ email, password }) {
+  async function login ({ email, password }) {
     const response = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         email,
-        password,
-      }),
+        password
+      })
     })
 
     const responseJson = await response.json()
@@ -67,13 +69,13 @@ const api = (() => {
     }
 
     const {
-      data: { token },
+      data: { token }
     } = responseJson
 
     return token
   }
 
-  async function getOwnProfile() {
+  async function getOwnProfile () {
     const response = await _fetchWithAuth(`${BASE_URL}/users/me`)
 
     const responseJson = await response.json()
@@ -85,13 +87,13 @@ const api = (() => {
     }
 
     const {
-      data: { user },
+      data: { user }
     } = responseJson
 
     return user
   }
 
-  async function getAllUsers() {
+  async function getAllUsers () {
     const response = await fetch(`${BASE_URL}/users`)
 
     const responseJson = await response.json()
@@ -103,13 +105,13 @@ const api = (() => {
     }
 
     const {
-      data: { users },
+      data: { users }
     } = responseJson
 
     return users
   }
 
-  async function getAllThreads() {
+  async function getAllThreads () {
     const response = await fetch(`${BASE_URL}/threads`)
 
     const responseJson = await response.json()
@@ -121,13 +123,13 @@ const api = (() => {
     }
 
     const {
-      data: { threads },
+      data: { threads }
     } = responseJson
 
     return threads
   }
 
-  async function getThreadDetail(threadId) {
+  async function getThreadDetail (threadId) {
     const response = await fetch(`${BASE_URL}/threads/${threadId}`)
 
     const responseJson = await response.json()
@@ -139,23 +141,23 @@ const api = (() => {
     }
 
     const {
-      data: { detailThread },
+      data: { detailThread }
     } = responseJson
 
     return detailThread
   }
 
-  async function createThread({ title, body, category }) {
+  async function createThread ({ title, body, category }) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         title,
         body,
-        category,
-      }),
+        category
+      })
     })
 
     const responseJson = await response.json()
@@ -167,21 +169,21 @@ const api = (() => {
     }
 
     const {
-      data: { thread },
+      data: { thread }
     } = responseJson
 
     return thread
   }
 
-  async function createComment({ threadId, content }) {
+  async function createComment ({ threadId, content }) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        content,
-      }),
+        content
+      })
     })
 
     const responseJson = await response.json()
@@ -193,18 +195,18 @@ const api = (() => {
     }
 
     const {
-      data: { comment },
+      data: { comment }
     } = responseJson
 
     return comment
   }
 
-  async function upVoteThread(threadId) {
+  async function upVoteThread (threadId) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/up-vote`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     })
 
     const responseJson = await response.json()
@@ -216,18 +218,18 @@ const api = (() => {
     }
 
     const {
-      data: { vote },
+      data: { vote }
     } = responseJson
 
     return vote
   }
 
-  async function downVoteThread(threadId) {
+  async function downVoteThread (threadId) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/down-vote`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     })
 
     const responseJson = await response.json()
@@ -239,18 +241,18 @@ const api = (() => {
     }
 
     const {
-      data: { vote },
+      data: { vote }
     } = responseJson
 
     return vote
   }
 
-  async function neutralizeThreadVote(threadId) {
+  async function neutralizeThreadVote (threadId) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/neutral-vote`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     })
 
     const responseJson = await response.json()
@@ -262,20 +264,20 @@ const api = (() => {
     }
 
     const {
-      data: { vote },
+      data: { vote }
     } = responseJson
 
     return vote
   }
 
-  async function upVoteComment({ threadId, commentId }) {
+  async function upVoteComment ({ threadId, commentId }) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       }
     )
 
@@ -288,20 +290,20 @@ const api = (() => {
     }
 
     const {
-      data: { vote },
+      data: { vote }
     } = responseJson
 
     return vote
   }
 
-  async function downVoteComment({ threadId, commentId }) {
+  async function downVoteComment ({ threadId, commentId }) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       }
     )
 
@@ -314,20 +316,20 @@ const api = (() => {
     }
 
     const {
-      data: { vote },
+      data: { vote }
     } = responseJson
 
     return vote
   }
 
-  async function neutralizeCommentVote({ threadId, commentId }) {
+  async function neutralizeCommentVote ({ threadId, commentId }) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json'
+        }
       }
     )
 
@@ -340,13 +342,13 @@ const api = (() => {
     }
 
     const {
-      data: { vote },
+      data: { vote }
     } = responseJson
 
     return vote
   }
 
-  async function getLeaderboards() {
+  async function getLeaderboards () {
     const response = await fetch(`${BASE_URL}/leaderboards`)
 
     const responseJson = await response.json()
@@ -358,7 +360,7 @@ const api = (() => {
     }
 
     const {
-      data: { leaderboards },
+      data: { leaderboards }
     } = responseJson
 
     return leaderboards
@@ -382,7 +384,7 @@ const api = (() => {
     upVoteComment,
     downVoteComment,
     neutralizeCommentVote,
-    getLeaderboards,
+    getLeaderboards
   }
 })()
 

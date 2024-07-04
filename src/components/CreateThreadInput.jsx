@@ -26,7 +26,7 @@ const CreateThreadInput = ({ onPostThread }) => {
           value={body}
           placeholder='body'
           onChange={onChangeBody}
-        ></textarea>
+        />
         <input
           className='border border-gray-500 px-3 py-1 rounded-sm'
           type='text'
@@ -43,7 +43,7 @@ const CreateThreadInput = ({ onPostThread }) => {
 }
 
 CreateThreadInput.propTypes = {
-  onPostThread: PropTypes.func.isRequired,
+  onPostThread: PropTypes.func.isRequired
 }
 
 export default CreateThreadInput

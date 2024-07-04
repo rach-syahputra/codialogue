@@ -6,63 +6,63 @@ const ActionType = {
   ADD_THREAD: 'ADD_THREAD',
   TOGGLE_UP_VOTE_THREAD: 'TOGGLE_UP_VOTE_THREAD_ON_THREADS',
   TOGGLE_DOWN_VOTE_THREAD: 'TOGGLE_DOWN_VOTE_THREAD_ON_THREADS',
-  TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD_ON_THREADS',
+  TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD_ON_THREADS'
 }
 
-function receiveThreadsActionCreator(threads) {
+function receiveThreadsActionCreator (threads) {
   return {
     type: ActionType.RECEIVE_THREADS,
     payload: {
-      threads,
-    },
+      threads
+    }
   }
 }
 
-function addThreadActionCreator(thread) {
+function addThreadActionCreator (thread) {
   return {
     type: ActionType.ADD_THREAD,
     payload: {
-      thread,
-    },
+      thread
+    }
   }
 }
 
-function toggleUpVoteThreadActionCreator({ threadId, userId }) {
+function toggleUpVoteThreadActionCreator ({ threadId, userId }) {
   return {
     type: ActionType.TOGGLE_UP_VOTE_THREAD,
     payload: {
       threadId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleDownVoteThreadActionCreator({ threadId, userId }) {
+function toggleDownVoteThreadActionCreator ({ threadId, userId }) {
   return {
     type: ActionType.TOGGLE_DOWN_VOTE_THREAD,
     payload: {
       threadId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleNeutralVoteThreadActionCreator({ threadId, userId }) {
+function toggleNeutralVoteThreadActionCreator ({ threadId, userId }) {
   return {
     type: ActionType.TOGGLE_NEUTRAL_VOTE_THREAD,
     payload: {
       threadId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function asyncAddThread({ title, body, category }) {
+function asyncAddThread ({ title, body, category }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -72,19 +72,19 @@ function asyncAddThread({ title, body, category }) {
       const thread = await api.createThread({ title, body, category })
       dispatch(addThreadActionCreator(thread))
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
     }
 
     dispatch(hideLoading())
   }
 }
 
-function asyncToggleUpVoteThread(threadId) {
+function asyncToggleUpVoteThread (threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -95,7 +95,7 @@ function asyncToggleUpVoteThread(threadId) {
     try {
       await api.upVoteThread(threadId)
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
     }
 
@@ -103,12 +103,12 @@ function asyncToggleUpVoteThread(threadId) {
   }
 }
 
-function asyncToggleDownVoteThread(threadId) {
+function asyncToggleDownVoteThread (threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -119,7 +119,7 @@ function asyncToggleDownVoteThread(threadId) {
     try {
       await api.downVoteThread(threadId)
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
     }
 
@@ -127,12 +127,12 @@ function asyncToggleDownVoteThread(threadId) {
   }
 }
 
-function asyncToggleNeutralVoteThread(threadId) {
+function asyncToggleNeutralVoteThread (threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -143,7 +143,7 @@ function asyncToggleNeutralVoteThread(threadId) {
     try {
       await api.neutralizeThreadVote(threadId)
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
     }
 
@@ -161,5 +161,5 @@ export {
   asyncAddThread,
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
-  asyncToggleNeutralVoteThread,
+  asyncToggleNeutralVoteThread
 }

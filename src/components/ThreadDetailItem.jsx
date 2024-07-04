@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import arrowUp from '../assets/arrow-up.png'
 import arrowDown from '../assets/arrow-down.png'
 import arrowUpToggled from '../assets/arrow-up-toggled.png'
 import arrowDownToggled from '../assets/arrow-down-toggled.png'
-import chat from '../assets/chat.png'
 import timeSince from '../utils/timeSince'
 import truncateBody from '../utils/truncateBody'
 import { useNavigate } from 'react-router-dom'
@@ -12,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
-  asyncToggleNeutralVoteThread,
+  asyncToggleNeutralVoteThread
 } from '../states/threadDetail/action'
 import { threadItemShape } from './ThreadItem'
 
@@ -24,7 +22,7 @@ const ThreadDetailItem = ({
   createdAt,
   owner,
   upVotesBy,
-  downVotesBy,
+  downVotesBy
 }) => {
   const [toggleUpVote, setToggleUpVote] = useState(false)
   const [toggleDownVote, setToggleDownVote] = useState(false)
@@ -93,21 +91,25 @@ const ThreadDetailItem = ({
       <div className='flex gap-4'>
         <div className='flex gap-1 items-center'>
           <button onClick={() => onUpVote(id)}>
-            {toggleUpVote ? (
-              <img src={arrowUpToggled} alt='' className='w-4 h-4' />
-            ) : (
-              <img src={arrowUp} alt='' className='w-4 h-4' />
-            )}
+            {toggleUpVote
+              ? (
+                <img src={arrowUpToggled} alt='' className='w-4 h-4' />
+                )
+              : (
+                <img src={arrowUp} alt='' className='w-4 h-4' />
+                )}
           </button>
           <span className='text-sm'>{upVotesBy?.length}</span>
         </div>
         <div className='flex gap-1 items-center'>
           <button onClick={() => onDownVote(id)}>
-            {toggleDownVote ? (
-              <img src={arrowDownToggled} alt='' className='w-4 h-4' />
-            ) : (
-              <img src={arrowDown} alt='' className='w-4 h-4' />
-            )}
+            {toggleDownVote
+              ? (
+                <img src={arrowDownToggled} alt='' className='w-4 h-4' />
+                )
+              : (
+                <img src={arrowDown} alt='' className='w-4 h-4' />
+                )}
           </button>
           <span className='text-sm'>{downVotesBy?.length}</span>
         </div>
@@ -117,7 +119,7 @@ const ThreadDetailItem = ({
 }
 
 ThreadDetailItem.propTypes = {
-  ...threadItemShape,
+  ...threadItemShape
 }
 
 export default ThreadDetailItem

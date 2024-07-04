@@ -17,13 +17,13 @@ const store = configureStore({
     users: usersReducer,
     categories: categoriesReducer,
     leaderboards: leaderboardsReducer,
-    loadingBar: loadingBarReducer,
+    loadingBar: loadingBarReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       immutableCheck: false,
-      serializableCheck: false,
-    }),
+      serializableCheck: false
+    })
 })
 
 export default store

@@ -1,4 +1,4 @@
-function timeSince(date) {
+function timeSince (date) {
   const now = new Date()
   const posted = new Date(date)
   const diff = now - posted

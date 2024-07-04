@@ -10,7 +10,7 @@ import { asyncPreloadProcess } from './states/isPreload/action'
 import Loading from './components/Loading'
 import RegisterPage from './pages/RegisterPage'
 
-function App() {
+function App () {
   const { isPreload = false } = useSelector((state) => state)
   const dispatch = useDispatch()
 

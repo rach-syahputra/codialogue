@@ -4,9 +4,13 @@
       "es2021": true,
       "node": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
-      "plugin:react/recommended",
-      "prettier"
+      "plugin:react/recommended"
   ],
   "overrides": [
   ],
@@ -20,7 +24,7 @@
   ],
   "rules": {
       "linebreak-style": "off",
-      "no-alert": "off",
+      "no-window.alert": "off",
       "no-underscore-dangle": "off",
       "import/prefer-default-export": "off",
       "react-hooks/rules-of-hooks": "error",

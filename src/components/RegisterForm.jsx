@@ -43,7 +43,7 @@ const RegisterForm = ({ register }) => {
 }
 
 RegisterForm.propTypes = {
-  register: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
 }
 
 export default RegisterForm

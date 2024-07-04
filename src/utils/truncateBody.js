@@ -1,4 +1,4 @@
-function truncateBody(body, maxLength) {
+function truncateBody (body, maxLength) {
   if (body.length <= maxLength) {
     return body
   }

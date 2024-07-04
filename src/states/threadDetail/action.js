@@ -9,91 +9,91 @@ const ActionType = {
   TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD_ON_THREAD_DETAIL',
   TOGGLE_UP_VOTE_COMMENT: 'TOGGLE_UP_VOTE_COMMENT',
   TOGGLE_DOWN_VOTE_COMMENT: 'TOGGLE_DOWN_VOTE_COMMENT',
-  TOGGLE_NEUTRAL_VOTE_COMMENT: 'TOGGLE_NEUTRAL_VOTE_COMMENT',
+  TOGGLE_NEUTRAL_VOTE_COMMENT: 'TOGGLE_NEUTRAL_VOTE_COMMENT'
 }
 
-function receiveThreadDetailActionCreator(threadDetail) {
+function receiveThreadDetailActionCreator (threadDetail) {
   return {
     type: ActionType.RECEIVE_THREAD_DETAIL,
     payload: {
-      threadDetail,
-    },
+      threadDetail
+    }
   }
 }
 
-function addCommentActionCreator(comment) {
+function addCommentActionCreator (comment) {
   return {
     type: ActionType.ADD_COMMENT,
     payload: {
-      comment,
-    },
+      comment
+    }
   }
 }
 
-function toggleUpVoteThreadActionCreator({ threadId, userId }) {
+function toggleUpVoteThreadActionCreator ({ threadId, userId }) {
   return {
     type: ActionType.TOGGLE_UP_VOTE_THREAD,
     payload: {
       threadId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleDownVoteThreadActionCreator({ threadId, userId }) {
+function toggleDownVoteThreadActionCreator ({ threadId, userId }) {
   return {
     type: ActionType.TOGGLE_DOWN_VOTE_THREAD,
     payload: {
       threadId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleNeutralVoteThreadActionCreator({ threadId, userId }) {
+function toggleNeutralVoteThreadActionCreator ({ threadId, userId }) {
   return {
     type: ActionType.TOGGLE_NEUTRAL_VOTE_THREAD,
     payload: {
       threadId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleUpVoteCommentActionCreator({ threadId, commentId, userId }) {
+function toggleUpVoteCommentActionCreator ({ threadId, commentId, userId }) {
   return {
     type: ActionType.TOGGLE_UP_VOTE_COMMENT,
     payload: {
       threadId,
       commentId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleDownVoteCommentActionCreator({ threadId, commentId, userId }) {
+function toggleDownVoteCommentActionCreator ({ threadId, commentId, userId }) {
   return {
     type: ActionType.TOGGLE_DOWN_VOTE_COMMENT,
     payload: {
       threadId,
       commentId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId }) {
+function toggleNeutralVoteCommentActionCreator ({ threadId, commentId, userId }) {
   return {
     type: ActionType.TOGGLE_NEUTRAL_VOTE_COMMENT,
     payload: {
       threadId,
       commentId,
-      userId,
-    },
+      userId
+    }
   }
 }
 
-function asyncReceiveThreadDetail(threadId) {
+function asyncReceiveThreadDetail (threadId) {
   return async (dispatch) => {
     dispatch(showLoading())
 
@@ -101,19 +101,19 @@ function asyncReceiveThreadDetail(threadId) {
       const threadDetail = await api.getThreadDetail(threadId)
       dispatch(receiveThreadDetailActionCreator(threadDetail))
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
     }
 
     dispatch(hideLoading())
   }
 }
 
-function asyncAddComment({ threadId, content }) {
+function asyncAddComment ({ threadId, content }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -123,19 +123,19 @@ function asyncAddComment({ threadId, content }) {
       const comment = await api.createComment({ threadId, content })
       dispatch(addCommentActionCreator(comment))
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
     }
 
     dispatch(hideLoading())
   }
 }
 
-function asyncToggleUpVoteThread(threadId) {
+function asyncToggleUpVoteThread (threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -146,7 +146,7 @@ function asyncToggleUpVoteThread(threadId) {
     try {
       await api.upVoteThread(threadId)
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
     }
 
@@ -154,12 +154,12 @@ function asyncToggleUpVoteThread(threadId) {
   }
 }
 
-function asyncToggleDownVoteThread(threadId) {
+function asyncToggleDownVoteThread (threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -170,7 +170,7 @@ function asyncToggleDownVoteThread(threadId) {
     try {
       await api.downVoteThread(threadId)
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
     }
 
@@ -178,12 +178,12 @@ function asyncToggleDownVoteThread(threadId) {
   }
 }
 
-function asyncToggleNeutralVoteThread(threadId) {
+function asyncToggleNeutralVoteThread (threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -194,7 +194,7 @@ function asyncToggleNeutralVoteThread(threadId) {
     try {
       await api.neutralizeThreadVote(threadId)
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
     }
 
@@ -202,12 +202,12 @@ function asyncToggleNeutralVoteThread(threadId) {
   }
 }
 
-function asyncToggleUpVoteComment({ threadId, commentId }) {
+function asyncToggleUpVoteComment ({ threadId, commentId }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -218,7 +218,7 @@ function asyncToggleUpVoteComment({ threadId, commentId }) {
     try {
       await api.upVoteComment({ threadId, commentId })
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
     }
 
@@ -226,12 +226,12 @@ function asyncToggleUpVoteComment({ threadId, commentId }) {
   }
 }
 
-function asyncToggleDownVoteComment({ threadId, commentId }) {
+function asyncToggleDownVoteComment ({ threadId, commentId }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -242,7 +242,7 @@ function asyncToggleDownVoteComment({ threadId, commentId }) {
     try {
       await api.downVoteComment({ threadId, commentId })
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
     }
 
@@ -250,12 +250,12 @@ function asyncToggleDownVoteComment({ threadId, commentId }) {
   }
 }
 
-function asyncToggleNeutralVoteComment({ threadId, commentId }) {
+function asyncToggleNeutralVoteComment ({ threadId, commentId }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
 
     if (!authUser) {
-      alert('you are unauthorized to perform this action, please LOG IN')
+      window.alert('you are unauthorized to perform this action, please LOG IN')
       return
     }
 
@@ -266,7 +266,7 @@ function asyncToggleNeutralVoteComment({ threadId, commentId }) {
     try {
       await api.neutralizeCommentVote({ threadId, commentId })
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
       dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
     }
 
@@ -284,5 +284,5 @@ export {
   asyncToggleNeutralVoteThread,
   asyncToggleUpVoteComment,
   asyncToggleDownVoteComment,
-  asyncToggleNeutralVoteComment,
+  asyncToggleNeutralVoteComment
 }

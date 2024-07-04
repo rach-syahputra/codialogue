@@ -32,7 +32,7 @@ const HomePage = () => {
 
   const threadsList = threads?.map((thread) => ({
     ...thread,
-    owner: users?.find((user) => user.id === thread?.ownerId),
+    owner: users?.find((user) => user.id === thread?.ownerId)
   }))
 
   return (

@@ -20,11 +20,11 @@ const LeaderboardsList = ({ leaderboards }) => {
 }
 
 const leaderboardShape = {
-  user: PropTypes.shape(userShape).isRequired,
+  user: PropTypes.shape(userShape).isRequired
 }
 
 LeaderboardsList.propTypes = {
-  leaderboards: PropTypes.arrayOf(PropTypes.shape(leaderboardShape)).isRequired,
+  leaderboards: PropTypes.arrayOf(PropTypes.shape(leaderboardShape)).isRequired
 }
 
 export default LeaderboardsList

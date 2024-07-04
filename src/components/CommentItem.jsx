@@ -9,7 +9,7 @@ import timeSince from '../utils/timeSince'
 import {
   asyncToggleNeutralVoteComment,
   asyncToggleUpVoteComment,
-  asyncToggleDownVoteComment,
+  asyncToggleDownVoteComment
 } from '../states/threadDetail/action'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -72,21 +72,25 @@ const CommentItem = ({ threadId, id, content, createdAt, owner, upVotesBy, downV
       <div className='flex gap-4'>
         <div className='flex gap-1 items-center'>
           <button onClick={() => onUpVote(threadId, id)}>
-            {toggleUpVote ? (
-              <img src={arrowUpToggled} alt='' className='w-4 h-4' />
-            ) : (
-              <img src={arrowUp} alt='' className='w-4 h-4' />
-            )}
+            {toggleUpVote
+              ? (
+                <img src={arrowUpToggled} alt='' className='w-4 h-4' />
+                )
+              : (
+                <img src={arrowUp} alt='' className='w-4 h-4' />
+                )}
           </button>
           <span className='text-sm'>{upVotesBy.length}</span>
         </div>
         <div className='flex gap-1 items-center'>
           <button onClick={() => onDownVote(threadId, id)}>
-            {toggleDownVote ? (
-              <img src={arrowDownToggled} alt='' className='w-4 h-4' />
-            ) : (
-              <img src={arrowDown} alt='' className='w-4 h-4' />
-            )}
+            {toggleDownVote
+              ? (
+                <img src={arrowDownToggled} alt='' className='w-4 h-4' />
+                )
+              : (
+                <img src={arrowDown} alt='' className='w-4 h-4' />
+                )}
           </button>
           <span className='text-sm'>{downVotesBy.length}</span>
         </div>
@@ -101,11 +105,11 @@ export const commentShape = {
   createdAt: PropTypes.string.isRequired,
   owner: PropTypes.shape(ownerShape).isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 CommentItem.propTypes = {
-  ...commentShape,
+  ...commentShape
 }
 
 export default CommentItem

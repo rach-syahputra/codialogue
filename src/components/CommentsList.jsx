@@ -16,7 +16,7 @@ const CommentsList = ({ threadId, comments }) => {
 
 CommentsList.propTypes = {
   threadId: PropTypes.string.isRequired,
-  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)).isRequired
 }
 
 export default CommentsList

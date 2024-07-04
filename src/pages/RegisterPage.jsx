@@ -11,7 +11,7 @@ const RegisterPage = () => {
 
   const onRegister = ({ name, email, password }) => {
     if (password.length < 6) {
-      alert('password must be at least 6 characters')
+      window.window.alert('password must be at least 6 characters')
     } else {
       dispatch(asyncRegisterUser({ name, email, password }))
       navigate('/login')

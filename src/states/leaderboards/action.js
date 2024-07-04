@@ -2,19 +2,19 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import api from '../../utils/api'
 
 const ActionType = {
-  RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
+  RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS'
 }
 
-function receiveLeaderboardsActionCreator(leaderboards) {
+function receiveLeaderboardsActionCreator (leaderboards) {
   return {
     type: ActionType.RECEIVE_LEADERBOARDS,
     payload: {
-      leaderboards,
-    },
+      leaderboards
+    }
   }
 }
 
-function asyncReceiveLeaderboards() {
+function asyncReceiveLeaderboards () {
   return async (dispatch) => {
     dispatch(showLoading())
 
@@ -23,7 +23,7 @@ function asyncReceiveLeaderboards() {
 
       dispatch(receiveLeaderboardsActionCreator(leaderboards))
     } catch (error) {
-      alert(error.message)
+      window.alert(error.message)
     }
 
     dispatch(hideLoading())

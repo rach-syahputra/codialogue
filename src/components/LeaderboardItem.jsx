@@ -19,12 +19,12 @@ export const userShape = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired
 }
 
 LeaderboardItem.propTypes = {
   user: PropTypes.shape(userShape).isRequired,
-  score: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired
 }
 
 export default LeaderboardItem

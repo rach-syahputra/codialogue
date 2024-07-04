@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   asyncToggleUpVoteThread,
   asyncToggleDownVoteThread,
-  asyncToggleNeutralVoteThread,
+  asyncToggleNeutralVoteThread
 } from '../states/threads/action'
 
 const ThreadItem = ({
@@ -24,7 +24,7 @@ const ThreadItem = ({
   owner,
   upVotesBy,
   downVotesBy,
-  totalComments,
+  totalComments
 }) => {
   const [toggleUpVote, setToggleUpVote] = useState(false)
   const [toggleDownVote, setToggleDownVote] = useState(false)
@@ -93,21 +93,25 @@ const ThreadItem = ({
       <div className='flex gap-4'>
         <div className='flex gap-1 items-center'>
           <button onClick={() => onUpVote(id)}>
-            {toggleUpVote ? (
-              <img src={arrowUpToggled} alt='' className='w-4 h-4' />
-            ) : (
-              <img src={arrowUp} alt='' className='w-4 h-4' />
-            )}
+            {toggleUpVote
+              ? (
+                <img src={arrowUpToggled} alt='' className='w-4 h-4' />
+                )
+              : (
+                <img src={arrowUp} alt='' className='w-4 h-4' />
+                )}
           </button>
           <span className='text-sm'>{upVotesBy?.length}</span>
         </div>
         <div className='flex gap-1 items-center'>
           <button onClick={() => onDownVote(id)}>
-            {toggleDownVote ? (
-              <img src={arrowDownToggled} alt='' className='w-4 h-4' />
-            ) : (
-              <img src={arrowDown} alt='' className='w-4 h-4' />
-            )}
+            {toggleDownVote
+              ? (
+                <img src={arrowDownToggled} alt='' className='w-4 h-4' />
+                )
+              : (
+                <img src={arrowDown} alt='' className='w-4 h-4' />
+                )}
           </button>
           <span className='text-sm'>{downVotesBy?.length}</span>
         </div>
@@ -123,7 +127,7 @@ const ThreadItem = ({
 export const ownerShape = {
   id: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export const threadItemShape = {
@@ -134,12 +138,12 @@ export const threadItemShape = {
   createdAt: PropTypes.string.isRequired,
   owner: PropTypes.shape(ownerShape).isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 ThreadItem.propTypes = {
   ...threadItemShape,
-  totalComments: PropTypes.number,
+  totalComments: PropTypes.number
 }
 
 export default ThreadItem
