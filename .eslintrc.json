@@ -1,41 +1,29 @@
 {
-  "env": {
-      "browser": true,
-      "es2021": true,
-      "node": true
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "settings": {
+        "react": {
+        "version": "detect"
+        }
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "eol-last": "off",
+        "semi": "error"
     }
-  },
-  "extends": [
-      "plugin:react/recommended"
-  ],
-  "overrides": [
-  ],
-  "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-  },
-  "plugins": [
-      "react",
-      "react-hooks"
-  ],
-  "rules": {
-      "linebreak-style": "off",
-      "no-window.alert": "off",
-      "no-underscore-dangle": "off",
-      "import/prefer-default-export": "off",
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "off",
-      "react/jsx-props-no-spreading": "off",
-    //   "react/prop-types": "off",
-      "semi": "off",
-      "eol-last": "off",
-      "no-unused-vars": "warn",
-      "quotes": "off",
-      "no-console": "off"
-    //   "import/no-extraneous-dependencies": ["off", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}]
-  }
 }
