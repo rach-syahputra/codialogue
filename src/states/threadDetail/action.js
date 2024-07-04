@@ -109,7 +109,14 @@ function asyncReceiveThreadDetail(threadId) {
 }
 
 function asyncAddComment({ threadId, content }) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(showLoading())
 
     try {
@@ -126,6 +133,12 @@ function asyncAddComment({ threadId, content }) {
 function asyncToggleUpVoteThread(threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(toggleUpVoteThreadActionCreator({ threadId, userId: authUser.id }))
 
     dispatch(showLoading())
@@ -144,6 +157,12 @@ function asyncToggleUpVoteThread(threadId) {
 function asyncToggleDownVoteThread(threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(toggleDownVoteThreadActionCreator({ threadId, userId: authUser.id }))
 
     dispatch(showLoading())
@@ -162,6 +181,12 @@ function asyncToggleDownVoteThread(threadId) {
 function asyncToggleNeutralVoteThread(threadId) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(toggleNeutralVoteThreadActionCreator({ threadId, userId: authUser.id }))
 
     dispatch(showLoading())
@@ -180,6 +205,12 @@ function asyncToggleNeutralVoteThread(threadId) {
 function asyncToggleUpVoteComment({ threadId, commentId }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(toggleUpVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
 
     dispatch(showLoading())
@@ -198,6 +229,12 @@ function asyncToggleUpVoteComment({ threadId, commentId }) {
 function asyncToggleDownVoteComment({ threadId, commentId }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(toggleDownVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
 
     dispatch(showLoading())
@@ -216,6 +253,12 @@ function asyncToggleDownVoteComment({ threadId, commentId }) {
 function asyncToggleNeutralVoteComment({ threadId, commentId }) {
   return async (dispatch, getState) => {
     const { authUser } = getState()
+
+    if (!authUser) {
+      alert('you are unauthorized to perform this action, please LOG IN')
+      return
+    }
+
     dispatch(toggleNeutralVoteCommentActionCreator({ threadId, commentId, userId: authUser.id }))
 
     dispatch(showLoading())

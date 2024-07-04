@@ -33,8 +33,8 @@ const ThreadDetailItem = ({
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const upVoteUserExist = upVotesBy.find((user) => user === authUser.id)
-    const downVoteUserExist = downVotesBy.find((user) => user === authUser.id)
+    const upVoteUserExist = upVotesBy.find((user) => user === authUser?.id)
+    const downVoteUserExist = downVotesBy.find((user) => user === authUser?.id)
 
     if (upVoteUserExist) {
       setToggleUpVote(true)
@@ -55,32 +55,22 @@ const ThreadDetailItem = ({
   const onUpVote = (id) => {
     if (toggleUpVote) {
       dispatch(asyncToggleNeutralVoteThread(id))
-      setToggleUpVote(false)
     } else if (toggleDownVote) {
       dispatch(asyncToggleNeutralVoteThread(id))
       dispatch(asyncToggleUpVoteThread(id))
-      setToggleUpVote(true)
-      setToggleDownVote(false)
     } else {
       dispatch(asyncToggleUpVoteThread(id))
-      setToggleUpVote(true)
-      setToggleDownVote(false)
     }
   }
 
   const onDownVote = (id) => {
     if (toggleDownVote) {
       dispatch(asyncToggleNeutralVoteThread(id))
-      setToggleDownVote(false)
     } else if (toggleUpVote) {
       dispatch(asyncToggleNeutralVoteThread(id))
       dispatch(asyncToggleDownVoteThread(id))
-      setToggleDownVote(true)
-      setToggleUpVote(false)
     } else {
       dispatch(asyncToggleDownVoteThread(id))
-      setToggleDownVote(true)
-      setToggleUpVote(false)
     }
   }
 
