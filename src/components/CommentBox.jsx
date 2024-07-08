@@ -1,15 +1,12 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
-import { useDispatch } from 'react-redux'
-import { asyncAddComment } from '../states/threadDetail/action'
 import PropTypes from 'prop-types'
 
-const CommentBox = ({ threadId }) => {
+const CommentBox = ({ threadId, postComment }) => {
   const [content, onChangeContent, setContent] = useInput('')
-  const dispatch = useDispatch()
 
-  const onPostComment = () => {
-    dispatch(asyncAddComment({ threadId, content }))
+  const handleButtonClick = () => {
+    postComment({ threadId, content })
     setContent('')
   }
 
@@ -27,7 +24,7 @@ const CommentBox = ({ threadId }) => {
         </button>
         <button
           className='text-white bg-black border-[1px] border-black text-sm px-4 py-1 rounded-sm'
-          onClick={onPostComment}
+          onClick={handleButtonClick}
         >
           Comment
         </button>
@@ -37,7 +34,8 @@ const CommentBox = ({ threadId }) => {
 }
 
 CommentBox.propTypes = {
-  threadId: PropTypes.string.isRequired
+  threadId: PropTypes.string.isRequired,
+  postComment: PropTypes.func.isRequired
 }
 
 export default CommentBox
