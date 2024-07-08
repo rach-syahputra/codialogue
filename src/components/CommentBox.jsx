@@ -22,7 +22,7 @@ const CommentBox = ({ threadId }) => {
         placeholder='Add a comment'
       />
       <div className='flex gap-2 justify-end'>
-        <button className='bg-white border-[1px] border-black text-sm px-4 py-1 rounded-sm'>
+        <button className='bg-white border-[1px] border-black text-sm px-4 py-1 rounded-sm' onClick={() => setContent('')}>
           Cancel
         </button>
         <button
