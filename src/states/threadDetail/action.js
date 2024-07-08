@@ -277,6 +277,7 @@ function asyncToggleNeutralVoteComment ({ threadId, commentId }) {
 export {
   ActionType,
   receiveThreadDetailActionCreator,
+  addCommentActionCreator,
   asyncReceiveThreadDetail,
   asyncAddComment,
   asyncToggleUpVoteThread,
