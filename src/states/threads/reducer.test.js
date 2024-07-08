@@ -7,6 +7,7 @@
 *   - should return the threads along with the new thread when given by ADD_THREAD action
 *   - should return the threads along with the toggled up vote thread when given by TOGGLE_UP_VOTE_THREAD action
 *   - should return the threads along with the toggled down vote thread when given by TOGGLE_DOWN_VOTE_THREAD action
+*   - should return the threads along with the toggled neutral vote thread when given by TOGGLE_NEUTRAL_VOTE_THREAD action
 */
 
 import { describe, it, expect } from 'vitest'
@@ -173,6 +174,43 @@ describe('threadsReducer function', () => {
       {
         ...initialState[0],
         downVotesBy: [action.payload.userId]
+      }
+    ])
+  })
+
+  it('should return the threads along with the toggled neutral vote thread when given by TOGGLE_NEUTRAL_VOTE_THREAD action', () => {
+    // arrange
+    const initialState = [
+      {
+        id: 'thread-1',
+        title: 'title-1',
+        body: 'body-1',
+        category: 'category-1',
+        cretedAt: '2021-06-21T07:00:00.000Z',
+        ownerId: 'user-1',
+        upVotesBy: ['user-2'],
+        downVotesBy: ['user-3'],
+        totalComments: 5
+      }
+    ]
+
+    const action = {
+      type: 'TOGGLE_NEUTRAL_VOTE_THREAD_ON_THREADS',
+      payload: {
+        threadId: 'thread-1',
+        userId: 'user-2'
+      }
+    }
+
+    // action
+    const nextState = threadsReducer(initialState, action)
+
+    // assert
+    expect(nextState).toEqual([
+      {
+        ...initialState[0],
+        upVotesBy: [],
+        downVotesBy: ['user-3']
       }
     ])
   })
