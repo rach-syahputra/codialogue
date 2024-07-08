@@ -23,7 +23,7 @@ describe('CommentBox component', () => {
 
   it('should handle content typing correctly', async () => {
     // Arrange
-    render(<MemoryRouter><CommentBox login={() => {}} /></MemoryRouter>)
+    render(<MemoryRouter><CommentBox threadId={'thread-1'} postComment={() => {}} /></MemoryRouter>)
     const contentInput = screen.getByPlaceholderText('Add a comment')
 
     // Action
@@ -35,7 +35,7 @@ describe('CommentBox component', () => {
 
   it('should set content input to empty when cancel button is clicked', async () => {
     // arrange
-    render(<MemoryRouter><CommentBox login={() => {}} /></MemoryRouter>)
+    render(<MemoryRouter><CommentBox threadId={'thread-1'} postComment={() => {}} /></MemoryRouter>)
     const contentInput = screen.getByPlaceholderText('Add a comment')
     await userEvent.type(contentInput, 'contenttest')
     const cancelButton = screen.getByRole('button', { name: 'Cancel' })

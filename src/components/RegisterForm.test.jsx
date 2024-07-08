@@ -25,7 +25,7 @@ describe('RegisterForm component0', () => {
 
   it('should handle name typing correctly', async () => {
     // Arrange
-    render(<MemoryRouter><RegisterForm login={() => {}} /></MemoryRouter>)
+    render(<MemoryRouter><RegisterForm register={() => {}} /></MemoryRouter>)
     const nameInput = screen.getByPlaceholderText('Name')
 
     // Action
@@ -37,7 +37,7 @@ describe('RegisterForm component0', () => {
 
   it('should handle email typing correctly', async () => {
     // Arrange
-    render(<MemoryRouter><RegisterForm login={() => {}} /></MemoryRouter>)
+    render(<MemoryRouter><RegisterForm register={() => {}} /></MemoryRouter>)
     const emailInput = screen.getByPlaceholderText('Email')
 
     // Action
@@ -49,7 +49,7 @@ describe('RegisterForm component0', () => {
 
   it('should handle password typing correctly', async () => {
     // Arrange
-    render(<MemoryRouter><RegisterForm login={() => {}} /></MemoryRouter>)
+    render(<MemoryRouter><RegisterForm register={() => {}} /></MemoryRouter>)
     const passwordInput = screen.getByPlaceholderText('Password')
 
     // Action
