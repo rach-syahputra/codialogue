@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import arrowUp from '../assets/arrow-up.png'
-import arrowDown from '../assets/arrow-down.png'
-import arrowUpToggled from '../assets/arrow-up-toggled.png'
-import arrowDownToggled from '../assets/arrow-down-toggled.png'
 import chat from '../assets/chat.png'
 import timeSince from '../utils/timeSince'
 import truncateBody from '../utils/truncateBody'
@@ -14,6 +10,7 @@ import {
   asyncToggleDownVoteThread,
   asyncToggleNeutralVoteThread
 } from '../states/threads/action'
+import Arrow from './Arrow'
 
 const ThreadItem = ({
   id,
@@ -95,10 +92,10 @@ const ThreadItem = ({
           <button onClick={() => onUpVote(id)}>
             {toggleUpVote
               ? (
-                <img src={arrowUpToggled} alt='' className='w-4 h-4' />
+                <Arrow type='up' toggled={true} />
                 )
               : (
-                <img src={arrowUp} alt='' className='w-4 h-4' />
+                <Arrow type='up' toggled={false} />
                 )}
           </button>
           <span className='text-sm'>{upVotesBy?.length}</span>
@@ -107,10 +104,10 @@ const ThreadItem = ({
           <button onClick={() => onDownVote(id)}>
             {toggleDownVote
               ? (
-                <img src={arrowDownToggled} alt='' className='w-4 h-4' />
+                <Arrow type='down' toggled={true} />
                 )
               : (
-                <img src={arrowDown} alt='' className='w-4 h-4' />
+                <Arrow type='down' toggled={false} />
                 )}
           </button>
           <span className='text-sm'>{downVotesBy?.length}</span>

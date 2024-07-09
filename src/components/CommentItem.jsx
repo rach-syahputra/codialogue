@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import arrowUp from '../assets/arrow-up.png'
-import arrowDown from '../assets/arrow-down.png'
-import arrowUpToggled from '../assets/arrow-up-toggled.png'
-import arrowDownToggled from '../assets/arrow-down-toggled.png'
 import { ownerShape } from './ThreadItem'
 import PropTypes from 'prop-types'
 import timeSince from '../utils/timeSince'
@@ -12,6 +8,7 @@ import {
   asyncToggleDownVoteComment
 } from '../states/threadDetail/action'
 import { useDispatch, useSelector } from 'react-redux'
+import Arrow from './Arrow'
 
 const CommentItem = ({ threadId, id, content, createdAt, owner, upVotesBy, downVotesBy }) => {
   const [toggleUpVote, setToggleUpVote] = useState(false)
@@ -74,10 +71,10 @@ const CommentItem = ({ threadId, id, content, createdAt, owner, upVotesBy, downV
           <button onClick={() => onUpVote(threadId, id)}>
             {toggleUpVote
               ? (
-                <img src={arrowUpToggled} alt='' className='w-4 h-4' />
+                <Arrow type='up' toggled={true} />
                 )
               : (
-                <img src={arrowUp} alt='' className='w-4 h-4' />
+                <Arrow type='up' toggled={false} />
                 )}
           </button>
           <span className='text-sm'>{upVotesBy.length}</span>
@@ -86,10 +83,10 @@ const CommentItem = ({ threadId, id, content, createdAt, owner, upVotesBy, downV
           <button onClick={() => onDownVote(threadId, id)}>
             {toggleDownVote
               ? (
-                <img src={arrowDownToggled} alt='' className='w-4 h-4' />
+                <Arrow type='down' toggled={true} />
                 )
               : (
-                <img src={arrowDown} alt='' className='w-4 h-4' />
+                <Arrow type='down' toggled={false} />
                 )}
           </button>
           <span className='text-sm'>{downVotesBy.length}</span>

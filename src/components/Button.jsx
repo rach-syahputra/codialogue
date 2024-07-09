@@ -2,8 +2,8 @@ import React from 'react'
 import '../styles/button.css'
 import PropTypes from 'prop-types'
 
-const Button = ({ primary, size, label, onClick}) => {
-  const mode = primary ? 'button--primary' : 'button--secondary';
+const Button = ({ primary, size, label, onClick }) => {
+  const mode = primary ? 'button--primary' : 'button--secondary'
   return (
     <button
       className={['button', `button--${size}`, mode].join(' ')}
