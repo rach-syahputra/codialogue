@@ -29,7 +29,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex items-center justify-center w-full h-[70px] bg-white border-b-[1px] border-gray-300 fixed top-0'>
+    <div className='flex items-center px-4 justify-center w-full h-[70px] bg-white border-b-[1px] border-gray-300 fixed top-0'>
       <div className='flex w-[1024px] max-w-[1024px] items-center justify-between m-auto'>
         <img src={logo} alt='' className='h-8' />
         {authUser

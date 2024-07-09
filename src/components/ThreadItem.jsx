@@ -72,7 +72,7 @@ const ThreadItem = ({
   }
 
   return (
-    <div className='flex flex-col py-6 gap-1 border-b-[1px] border-gray-300'>
+    <div className='flex shrink flex-col py-6 gap-1 border-b-[1px] border-gray-300'>
       <div className='flex items-center gap-2 text-sm'>
         <img src={owner?.avatar} alt='' className='w-6 h-6 rounded-full' />
         <span className='font-medium'>{owner?.name}</span>

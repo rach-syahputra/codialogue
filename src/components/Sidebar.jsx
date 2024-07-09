@@ -9,7 +9,7 @@ const Sidebar = ({ activeCategory, handleActiveCategoryChange, currentPage }) =>
   const categories = useSelector((state) => state.categories)
 
   return (
-    <div className='flex flex-col gap-6 w-[200px] h-full fixed p-4 border-r-[1px] border-gray-300'>
+    <div className='hidden md:flex flex-col gap-6 md:w-[200px] h-full fixed p-4 items-center lg:items-start border-r-[1px] border-gray-300'>
       <ul className='flex flex-col gap-2'>
         <li
           className={`flex gap-2 items-center select-none ${

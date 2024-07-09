@@ -4,7 +4,7 @@ import LeaderboardItem, { userShape } from './LeaderboardItem'
 
 const LeaderboardsList = ({ leaderboards }) => {
   return (
-    <div className='flex flex-col gap-4 ml-[200px] px-8 py-4'>
+    <div className='flex flex-col gap-4 md:ml-[200px] px-8 py-4'>
       <h1 className='text-lg font-bold'>Active User Standings</h1>
       <div className='flex flex-col gap-4'>
         <div className='flex items-center justify-between text-gray-500'>
