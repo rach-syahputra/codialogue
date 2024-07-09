@@ -27,7 +27,7 @@ describe('Login spec', () => {
   })
 
   it('should display alert when password is empty', () => {
-    cy.get('input[placeholder="Email"]').type('testemail')
+    cy.get('input[placeholder="Email"]').type('rach.syahputra@gmail.com')
 
     cy.get('button').contains(/^Login$/).click()
 
