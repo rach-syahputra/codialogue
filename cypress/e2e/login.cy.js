@@ -53,7 +53,7 @@ describe('Login spec', () => {
 
     cy.get('input[placeholder="Password"]').type('772345')
 
-    cy.get('button').contains(/^login$/).click()
+    cy.get('button').contains(/^Login$/).click()
 
     cy.get('span').contains(/^Threads$/).should('be.visible')
   })
