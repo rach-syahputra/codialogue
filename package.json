@@ -9,7 +9,9 @@
     "lint": "eslint ./src --ext .jsx --ext .js",
     "preview": "vite preview",
     "test": "vitest",
-    "e2e": "cypress run"
+    "e2e": "cypress run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
@@ -22,6 +24,15 @@
     "react-router-dom": "^6.24.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.1.11",
+    "@storybook/addon-interactions": "^8.1.11",
+    "@storybook/addon-links": "^8.1.11",
+    "@storybook/addon-onboarding": "^8.1.11",
+    "@storybook/blocks": "^8.1.11",
+    "@storybook/react": "^8.1.11",
+    "@storybook/react-vite": "^8.1.11",
+    "@storybook/test": "^8.1.11",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^14.5.2",
@@ -37,7 +48,9 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.4.0",
     "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-storybook": "^0.8.0",
     "jsdom": "^24.1.0",
+    "storybook": "^8.1.11",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1",
     "vitest": "^1.6.0"

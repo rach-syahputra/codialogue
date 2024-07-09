@@ -1,7 +1,7 @@
 {
     "settings": {
         "react": {
-        "version": "detect"
+            "version": "detect"
         }
     },
     "env": {
@@ -11,7 +11,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:storybook/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -25,6 +26,5 @@
         "html",
         "cypress"
     ],
-    "rules": {
-    }
+    "rules": {}
 }
