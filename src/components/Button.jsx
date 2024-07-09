@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/button.css'
 import PropTypes from 'prop-types'
 
-const Button = ({ primary, size, label, onClick }) => {
+const Button = ({ primary = true, size = 'large', label = 'Button', onClick }) => {
   const mode = primary ? 'button--primary' : 'button--secondary'
   return (
     <button
@@ -20,10 +20,4 @@ Button.propTypes = {
   primary: PropTypes.bool,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   label: PropTypes.string.isRequired
-}
-
-Button.defaultProps = {
-  primary: true,
-  size: 'large',
-  label: 'Button'
 }
