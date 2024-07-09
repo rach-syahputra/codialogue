@@ -69,7 +69,7 @@ describe('RegisterForm component0', () => {
     await userEvent.type(emailInput, 'emailtest')
     const passwordInput = screen.getByPlaceholderText('Password')
     await userEvent.type(passwordInput, 'passwordtest')
-    const registerButton = screen.getByRole('button', { name: 'Register' })
+    const registerButton = screen.getByRole('button', { name: 'Sign Up' })
 
     // action
     await userEvent.click(registerButton)
