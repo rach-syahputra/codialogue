@@ -53,12 +53,7 @@ describe('Login spec', () => {
 
     cy.get('input[placeholder="Password"]').type('772345')
 
-    cy.get('button').contains(/^Login$/).click()
-
-    // cy.request('POST', 'https://forum-api.dicoding.dev/v1/login', {
-    //   email: 'rach.syahputra@gmail.com',
-    //   password: '772345'
-    // })
+    cy.get('button').contains(/^login$/).click()
 
     cy.get('span').contains(/^Threads$/).should('be.visible')
   })
