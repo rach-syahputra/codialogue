@@ -67,30 +67,8 @@ const CommentItem = ({ threadId, id, content, createdAt, owner, upVotesBy, downV
       <p>{content}</p>
 
       <div className='flex gap-4'>
-        <div className='flex gap-1 items-center'>
-          <button onClick={() => onUpVote(threadId, id)}>
-            {toggleUpVote
-              ? (
-                <Arrow type='up' toggled={true} />
-                )
-              : (
-                <Arrow type='up' toggled={false} />
-                )}
-          </button>
-          <span className='text-sm'>{upVotesBy.length}</span>
-        </div>
-        <div className='flex gap-1 items-center'>
-          <button onClick={() => onDownVote(threadId, id)}>
-            {toggleDownVote
-              ? (
-                <Arrow type='down' toggled={true} />
-                )
-              : (
-                <Arrow type='down' toggled={false} />
-                )}
-          </button>
-          <span className='text-sm'>{downVotesBy.length}</span>
-        </div>
+        <Arrow type='up' toggled={toggleUpVote} value={upVotesBy?.length} onClick={() => onUpVote(threadId, id)} />
+        <Arrow type='down' toggled={toggleDownVote} value={downVotesBy?.length} onClick={() => onDownVote(threadId, id)} />
       </div>
     </div>
   )

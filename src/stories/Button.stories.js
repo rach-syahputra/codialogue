@@ -1,45 +1,45 @@
-import { fn } from '@storybook/test';
-import Button from '../components/Button';
+import { fn } from '@storybook/test'
+import Button from '../components/Button'
 
 export default {
   title: 'Button',
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   },
-  args: { onClick: fn() },
-};
+  args: { onClick: fn() }
+}
 
 export const Primary = {
   args: {
     primary: true,
-    label: 'Button',
-  },
-};
+    label: 'Button'
+  }
+}
 
 export const Secondary = {
   args: {
-    label: 'Button',
-  },
-};
+    label: 'Button'
+  }
+}
 
 export const Large = {
   args: {
     size: 'large',
-    label: 'Button',
-  },
-};
+    label: 'Button'
+  }
+}
 
 export const Medium = {
   args: {
     size: 'medium',
-    label: 'Button',
-  },
-};
+    label: 'Button'
+  }
+}
 
 export const Small = {
   args: {
     size: 'small',
-    label: 'Button',
-  },
-};
+    label: 'Button'
+  }
+}

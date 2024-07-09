@@ -86,30 +86,8 @@ const ThreadDetailItem = ({
       <p>{truncateBody(body, 200)}</p>
 
       <div className='flex gap-4'>
-        <div className='flex gap-1 items-center'>
-          <button onClick={() => onUpVote(id)}>
-            {toggleUpVote
-              ? (
-                <Arrow type='up' toggled={true} />
-                )
-              : (
-                <Arrow type='up' toggled={false} />
-                )}
-          </button>
-          <span className='text-sm'>{upVotesBy?.length}</span>
-        </div>
-        <div className='flex gap-1 items-center'>
-          <button onClick={() => onDownVote(id)}>
-            {toggleDownVote
-              ? (
-                <Arrow type='down' toggled={true} />
-                )
-              : (
-                <Arrow type='down' toggled={false} />
-                )}
-          </button>
-          <span className='text-sm'>{downVotesBy?.length}</span>
-        </div>
+      <Arrow type='up' toggled={toggleUpVote} value={upVotesBy?.length} onClick={() => onUpVote(id)} />
+      <Arrow type='down' toggled={toggleDownVote} value={downVotesBy?.length} onClick={() => onDownVote(id)} />
       </div>
     </div>
   )

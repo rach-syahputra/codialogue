@@ -5,15 +5,21 @@ import arrowDownImg from '../assets/arrow-down.png'
 import arrowUpToggledImg from '../assets/arrow-up-toggled.png'
 import arrowDownToggledImg from '../assets/arrow-down-toggled.png'
 
-const Arrow = ({ type, toggled }) => {
+const Arrow = ({ type, toggled, value, onClick }) => {
   const image = type === 'up' ? toggled ? arrowUpToggledImg : arrowUpImg : type === 'down' ? toggled ? arrowDownToggledImg : arrowDownImg : ''
 
   return (
-    <img
-      src={image}
-      alt=''
-      className='w-4 h-4'
-    />
+    <div className='flex gap-1 items-center'>
+      <button onClick={onClick}>
+        <img
+          src={image}
+          alt=''
+          className='w-4 h-4'
+        />
+      </button>
+      <span className='text-sm'>{value}</span>
+    </div>
+
   )
 }
 
@@ -21,5 +27,7 @@ export default Arrow
 
 Arrow.propTypes = {
   type: PropTypes.oneOf(['up', 'down']),
-  toggled: PropTypes.bool
+  toggled: PropTypes.bool,
+  value: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired
 }
