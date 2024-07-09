@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import '../styles/arrow.css'
 import arrowUpImg from '../assets/arrow-up.png'
 import arrowDownImg from '../assets/arrow-down.png'
 import arrowUpToggledImg from '../assets/arrow-up-toggled.png'
@@ -9,15 +10,13 @@ const Arrow = ({ type, toggled, value, onClick }) => {
   const image = type === 'up' ? toggled ? arrowUpToggledImg : arrowUpImg : type === 'down' ? toggled ? arrowDownToggledImg : arrowDownImg : ''
 
   return (
-    <div className='flex gap-1 items-center'>
+    <div className='arrow'>
       <button onClick={onClick}>
         <img
           src={image}
-          alt=''
-          className='w-4 h-4'
         />
       </button>
-      <span className='text-sm'>{value}</span>
+      <span>{value}</span>
     </div>
 
   )
