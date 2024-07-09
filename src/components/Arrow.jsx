@@ -31,3 +31,8 @@ Arrow.propTypes = {
   value: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired
 }
+
+Arrow.defaultProps = {
+  toggled: false,
+  value: 0
+}
