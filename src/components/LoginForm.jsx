@@ -9,11 +9,7 @@ const LoginForm = ({ login }) => {
   const [password, onPasswordChange] = useInput('')
 
   return (
-    <form
-      action=''
-      className='flex flex-col gap-4 w-[300px]'
-      onSubmit={() => login({ email, password })}
-    >
+    <div className='flex flex-col gap-4 w-[300px]'>
       <div className='flex flex-col gap-2 text-sm'>
         <input
           type='text'
@@ -31,7 +27,7 @@ const LoginForm = ({ login }) => {
         />
       </div>
 
-      <Button label='Login'/>
+      <Button label='Login' onClick={() => login({ email, password })}/>
 
       <p className='text-sm'>
         Don&apos;t have an account yet?{' '}
@@ -39,7 +35,7 @@ const LoginForm = ({ login }) => {
           <Link to='/register'>Sign Up</Link>
         </span>
       </p>
-    </form>
+    </div>
   )
 }
 

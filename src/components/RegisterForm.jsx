@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import useInput from '../hooks/useInput'
+import Button from './Button'
 
 const RegisterForm = ({ register }) => {
   const [name, onNameChange] = useInput('')
@@ -8,11 +9,7 @@ const RegisterForm = ({ register }) => {
   const [password, onPasswordChange] = useInput('')
 
   return (
-    <form
-      action=''
-      className='flex flex-col gap-4 w-[300px]'
-      onSubmit={() => register({ name, email, password })}
-    >
+    <div className='flex flex-col gap-4 w-[300px]'>
       <div className='flex flex-col gap-2 text-sm'>
         <input
           type='text'
@@ -37,8 +34,8 @@ const RegisterForm = ({ register }) => {
         />
       </div>
 
-      <button className='px-4 py-2 text-white text-sm bg-black rounded-sm'>Register</button>
-    </form>
+      <Button label='Sign Up' onClick={() => register({ name, email, password })} />
+    </div>
   )
 }
 

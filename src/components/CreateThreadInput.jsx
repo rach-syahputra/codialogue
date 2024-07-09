@@ -9,11 +9,7 @@ const CreateThreadInput = ({ onPostThread }) => {
   const [category, onChangeCategory] = useInput('')
 
   return (
-    <form
-      action=''
-      className='flex flex-col gap-4'
-      onSubmit={() => onPostThread({ title, body, category })}
-    >
+    <div className='flex flex-col gap-4'>
       <div className='flex flex-col gap-4 '>
         <input
           className='border border-gray-500 px-3 py-1 rounded-sm'
@@ -36,8 +32,9 @@ const CreateThreadInput = ({ onPostThread }) => {
           onChange={onChangeCategory}
         />
       </div>
-      <Button label='Post Thread' />
-    </form>
+
+      <Button label='Post Thread' onClick={() => onPostThread({ title, body, category })} />
+    </div>
   )
 }
 
