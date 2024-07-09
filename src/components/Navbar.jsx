@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { asyncUnsetAuthUser } from '../states/authUser/action'
 import { useNavigate } from 'react-router-dom'
 import plus from '../assets/plus.png'
+import Button from './Button'
 
 const Navbar = () => {
   const [openProfileMenu, setOpenProfileMenu] = useState(false)
@@ -57,9 +58,7 @@ const Navbar = () => {
             </div>
             )
           : (
-            <button className='bg-blue-950 text-white px-4 py-2 rounded-md' onClick={onLogin}>
-              Log In
-            </button>
+            <Button label='Log In' onClick={onLogin}/>
             )}
       </div>
     </div>

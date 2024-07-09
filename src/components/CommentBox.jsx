@@ -1,6 +1,7 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
 import PropTypes from 'prop-types'
+import Button from './Button'
 
 const CommentBox = ({ threadId, postComment }) => {
   const [content, onChangeContent, setContent] = useInput('')
@@ -19,15 +20,8 @@ const CommentBox = ({ threadId, postComment }) => {
         placeholder='Add a comment'
       />
       <div className='flex gap-2 justify-end'>
-        <button className='bg-white border-[1px] border-black text-sm px-4 py-1 rounded-sm' onClick={() => setContent('')}>
-          Cancel
-        </button>
-        <button
-          className='text-white bg-black border-[1px] border-black text-sm px-4 py-1 rounded-sm'
-          onClick={handleButtonClick}
-        >
-          Comment
-        </button>
+        <Button label='Cancel' primary={false} size='medium' onClick={() => setContent('')} />
+        <Button label='Comment' size='medium' onClick={handleButtonClick} />
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
 import PropTypes from 'prop-types'
+import Button from './Button'
 
 const CreateThreadInput = ({ onPostThread }) => {
   const [title, onChangeTitle] = useInput('')
@@ -35,9 +36,7 @@ const CreateThreadInput = ({ onPostThread }) => {
           onChange={onChangeCategory}
         />
       </div>
-      <button className='bg-black text-white px-3 py-1 rounded-sm w-[120px]' type='submit'>
-        Post Thread
-      </button>
+      <Button label='Post Thread' />
     </form>
   )
 }

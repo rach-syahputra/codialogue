@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import useInput from '../hooks/useInput'
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
 const LoginForm = ({ login }) => {
   const [email, onEmailChange] = useInput('')
@@ -30,7 +31,7 @@ const LoginForm = ({ login }) => {
         />
       </div>
 
-      <button className='px-4 py-2 text-white text-sm bg-black rounded-sm'>Login</button>
+      <Button label='Login'/>
 
       <p className='text-sm'>
         Don&apos;t have an account yet?{' '}

@@ -1,0 +1,35 @@
+.button {
+  font-family: ui-sans-serif;
+  font-weight: 500;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+
+.button--primary {
+  color: white;
+  background-color: #1b1b1b;
+}
+
+.button--secondary {
+  color: #1b1b1b;
+  background-color: white;
+  border: 1px solid #1b1b1b;
+}
+
+.button--small {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+.button--medium {
+  font-size: 14px;
+  padding: 10px 14px;
+}
+
+.button--large {
+  font-size: 16px;
+  padding: 12px 16px;
+}
