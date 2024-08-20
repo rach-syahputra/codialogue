@@ -14,9 +14,3 @@ Discussion forum web application. A "React Developer Expert" submission project 
 
 ## Links
 - https://codialogue-app.vercel.app/
-
-
-
-
-
-
