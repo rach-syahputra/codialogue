@@ -1,8 +1,13 @@
-# React + Vite
+## About The Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Discussion forum web application. A "React Developer Expert" submission project by Dicoding Academy
 
-Currently, two official plugins are available:
+## Technology Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ![React](https://img.shields.io/badge/react-black?style=for-the-badge&logo=react)
+- ![Tailwind CSS](https://img.shields.io/badge/tailwind-black?style=for-the-badge&logo=tailwind%20css)
+- ![Redux](https://img.shields.io/badge/redux-black?style=for-the-badge&logo=redux)
+- ![Vite](https://img.shields.io/badge/vite-black?style=for-the-badge&logo=vite)
+- ![Vitess](https://img.shields.io/badge/vitess-black?style=for-the-badge&logo=vitess)
+- ![Cypress](https://img.shields.io/badge/cypress-black?style=for-the-badge&logo=cypress)
+- ![Storybook](https://img.shields.io/badge/storybook-black?style=for-the-badge&logo=storybook)
